@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<!-- saved from url=(0095)https://www.interviewcake.com/concept/swift/hash-map?course=fc1&section=hashing-and-hash-tables -->
+<html lang="en" dir="ltr" class=" scrolling-body "><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}</style>
+	<link rel="preload" href="https://www.interviewcake.com/static/fonts/glyphiconshalflings-regular.woff" as="font" type="font/woff" crossorigin="">
+
+	
+        <script src="./Hash Table_Hash Map Data Structure _ Interview Cake_files/nr-1158.min.js"></script><script type="text/javascript" async="" src="./Hash Table_Hash Map Data Structure _ Interview Cake_files/analytics.js"></script><script type="text/javascript" async="" src="./Hash Table_Hash Map Data Structure _ Interview Cake_files/mixpanel-2-latest.min.js"></script><script type="text/javascript" async="" src="./Hash Table_Hash Map Data Structure _ Interview Cake_files/f.txt"></script><script type="text/javascript" async="" src="./Hash Table_Hash Map Data Structure _ Interview Cake_files/4774384.js"></script><script type="text/javascript" async="" src="./Hash Table_Hash Map Data Structure _ Interview Cake_files/fbevents.js"></script><script id="facebook-jssdk" src="./Hash Table_Hash Map Data Structure _ Interview Cake_files/all.js"></script><script type="text/javascript" async="" src="./Hash Table_Hash Map Data Structure _ Interview Cake_files/analytics.min.js"></script><script type="text/javascript" src="./Hash Table_Hash Map Data Structure _ Interview Cake_files/6f13d854a866.js" defer=""></script>
+    
+
+
+
+    <script type="text/javascript">
+        
+        window.IC = window.IC || {};
+        window.IC.currentUser = JSON.parse('{\u0022id\u0022:10501631,\u0022username\u0022:\u00222018\u002D12\u002D17_17:22:11_j4%26i\u0022,\u0022email\u0022:\u0022tanyab@crow.co.il\u0022,\u0022date_joined\u0022:\u00222018\u002D12\u002D17T17:22:11.906531+00:00\u0022,\u0022first_name\u0022:\u0022tanya\u0022,\u0022last_name\u0022:\u0022\u0022,\u0022full_name\u0022:\u0022\u0022,\u0022short_name\u0022:\u0022tanya\u0022,\u0022is_anonymous\u0022:false,\u0022is_on_last_question\u0022:false,\u0022percent_done\u0022:0,\u0022num_questions_done\u0022:0,\u0022num_questions_remaining\u0022:46,\u0022is_full_access\u0022:true,\u0022is_student\u0022:false,\u0022first_payment_date\u0022:\u00222019\u002D12\u002D10T17:21:43.892974Z\u0022,\u0022last_payment_date\u0022:\u00222019\u002D12\u002D10T17:21:43.892974Z\u0022,\u0022num_free_questions_left\u0022:0,\u0022terms_has_agreed_to_latest\u0022:false,\u0022preferred_content_language\u0022:\u0022swift\u0022,\u0022preferred_editor_language\u0022:\u0022swift\u0022,\u0022is_staff\u0022:false,\u0022auth_providers_human_readable_list\u0022:\u0022Google and Facebook\u0022,\u0022num_auth_providers\u0022:2,\u0022auth_email\u0022:\u0022cokacolata@gmail.com\u0022}');
+        
+    </script>
+
+    
+        
+    
+
+    
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"9e57878e2e",applicationID:"7328113"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"9e57878e2e","applicationID":"7328113","transactionName":"ZVwAbEQCDUQCAUwKDFwWJE1YABdeDAwXDhpBUBZdGA4CXg0DSBNNRFAHT0VZIFgNAV0TF2RQB08YBAZD","queueTime":2,"applicationTime":62,"agent":""}</script>
+        <link rel="shortcut icon" type="image/x-icon" href="https://www.interviewcake.com/images/favicon.ico?bust=204">
+        <link rel="canonical" href="https://www.interviewcake.com/concept/java/hash-map">
+        <meta name="description" content="A hash table (also called a hash, hash map or dictionary) is a data structure that pairs keys to values. It&#39;s implemented with a dynamic array and a &quot;hashing function.&quot;">
+
+        <meta property="og:title" content="Hash Table/Hash Map Data Structure | Interview Cake">
+        <meta property="og:description" content="A hash table (also called a hash, hash map or dictionary) is a data structure that pairs keys to values. It&#39;s implemented with a dynamic array and a &quot;hashing function.&quot;">
+        <meta property="og:image" content="https://www.interviewcake.com/static/images/cake_white_on_blue_600_600_unrounded.png?bust=204">
+        <meta property="og:type" content="website">
+        <meta property="og:locale" content="en_US">
+        <meta property="og:site_name" content="Interview Cake: Programming Interview Questions and Tips">
+        <meta property="fb:app_id" content="149278655279066">
+        <meta property="fb:admins" content="514407734">
+        <meta property="og:url" content="https://www.interviewcake.com/concept/java/hash-map">
+
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="@interviewcake">
+        <meta name="twitter:title" content="Hash Table/Hash Map Data Structure | Interview Cake">
+        <meta name="twitter:description" content="A hash table (also called a hash, hash map or dictionary) is a data structure that pairs keys to values. It&#39;s implemented with a dynamic array and a &quot;hashing function.&quot;">
+        <meta name="twitter:creator" content="@interviewcake">
+        <meta name="twitter:image:src" content="https://www.interviewcake.com/static/images/cake_white_on_blue_600_600_unrounded.png?bust=204">
+        <meta name="twitter:domain" content="interviewcake.com">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="google-site-verification" content="r7D0sJ5yY_0tZHJ3uXk2pPriygDLCPtz7Ihqq5NTpf8">
+
+        <title>Hash Table/Hash Map Data Structure | Interview Cake</title>
+    
+
+
+    
+
+    
+
+    
+
+    
+
+
+        <style type="text/css" media="all">.article .section-wrapper.heading,.article.home .section-wrapper.heading,.article .section-wrapper.heading.slim-bottom,.article.home .section-wrapper.heading.slim-bottom{padding:30px 0}.article .section-wrapper.heading.taller,.article.home .section-wrapper.heading.taller,.article .section-wrapper.heading.slim-bottom.taller,.article.home .section-wrapper.heading.slim-bottom.taller{padding:100px 0}@media (max-width:480px){.article .section-wrapper.heading.taller,.article.home .section-wrapper.heading.taller,.article .section-wrapper.heading.slim-bottom.taller,.article.home .section-wrapper.heading.slim-bottom.taller{padding-top:30px}}.article .section-wrapper.heading.slim-bottom,.article.home .section-wrapper.heading.slim-bottom,.article .section-wrapper.heading.slim-bottom.slim-bottom,.article.home .section-wrapper.heading.slim-bottom.slim-bottom{padding-bottom:25px}.article .section-wrapper.heading h1,.article.home .section-wrapper.heading h1,.article .section-wrapper.heading.slim-bottom h1,.article.home .section-wrapper.heading.slim-bottom h1{margin:0;padding:0 0 5px}@media (max-width:320px){.article .section-wrapper.heading h1,.article.home .section-wrapper.heading h1,.article .section-wrapper.heading.slim-bottom h1,.article.home .section-wrapper.heading.slim-bottom h1{padding-bottom:6px}}.article .section-wrapper.heading h2,.article.home .section-wrapper.heading h2,.article .section-wrapper.heading.slim-bottom h2,.article.home .section-wrapper.heading.slim-bottom h2{margin:0;padding:0;font-size:22px;line-height:30px}@media (max-width:320px){.article .section-wrapper.heading h2,.article.home .section-wrapper.heading h2,.article .section-wrapper.heading.slim-bottom h2,.article.home .section-wrapper.heading.slim-bottom h2{font-size:19px;line-height:27px}}.article .section-wrapper.heading p:first-of-type,.article.home .section-wrapper.heading p:first-of-type,.article .section-wrapper.heading.slim-bottom p:first-of-type,.article.home .section-wrapper.heading.slim-bottom p:first-of-type{margin:0;padding:10px 0 0}.article .section-wrapper.heading a.btn.get-started,.article.home .section-wrapper.heading a.btn.get-started,.article .section-wrapper.heading.slim-bottom a.btn.get-started,.article.home .section-wrapper.heading.slim-bottom a.btn.get-started{margin:30px 0 0}html{font-family:open sans,"Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}h1,.glyphicon,.navbar-brand{visibility:hidden}div[code-block]{font-family:'Inconsolata','Droid Mono',Courier New;padding:10px 18px;border:0px solid #5bc0de;border-left-width:5px;font-size:14px;line-height:1.75;white-space:pre!important}body{margin:0}section{display:block}[hidden]{display:none}a{background-color:transparent}strong{font-weight:700}h1{margin:0.67em 0;font-size:2em}small{font-size:80%}img{border:0}button,input,select{margin:0;font:inherit;color:inherit}button{overflow:visible}button,select{text-transform:none}button,input[type=submit]{-webkit-appearance:button}button::-moz-focus-inner,input::-moz-focus-inner{padding:0;border:0}input{line-height:normal}*{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}:after,:before{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}html{font-size:10px}body{font-size:14px;line-height:1.42857143;color:#333;background-color:#fff}button,input,select{font-family:inherit;font-size:inherit;line-height:inherit}a{color:#337ab7;text-decoration:none}img{vertical-align:middle}.carousel-inner>.item>img{display:block;max-width:100%;height:auto}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}.h2,h1,h2,h3,h4,h5{font-family:inherit;font-weight:500;line-height:1.1;color:inherit}.h2,h1,h2,h3{margin-top:20px;margin-bottom:10px}h4,h5{margin-top:10px;margin-bottom:10px}h1{font-size:36px}.h2,h2{font-size:30px}h3{font-size:24px}h4{font-size:18px}h5{font-size:14px}p{margin:0 0 10px}small{font-size:85%}.text-center{text-align:center}ol,ul{margin-top:0;margin-bottom:10px}ul ul{margin-bottom:0}address{margin-bottom:20px;font-style:normal;line-height:1.42857143}.container-fluid{padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}.row{margin-right:-15px;margin-left:-15px}.col-sm-6{position:relative;min-height:1px;padding-right:15px;padding-left:15px}@media (min-width:768px){.col-sm-6{float:left}.col-sm-6{width:50%}}.form-control::-moz-placeholder{color:#999;opacity:1}.form-control:-ms-input-placeholder{color:#999}.form-control::-webkit-input-placeholder{color:#999}.btn{display:inline-block;padding:6px 12px;margin-bottom:0;font-size:14px;font-weight:400;line-height:1.42857143;text-align:center;white-space:nowrap;vertical-align:middle;-ms-touch-action:manipulation;touch-action:manipulation;background-image:none;border:1px solid transparent;border-radius:4px}.btn-default{color:#333;background-color:#fff;border-color:#ccc}.btn-lg{padding:10px 16px;font-size:18px;line-height:1.3333333;border-radius:6px}.fade{opacity:0}.collapse{display:none;visibility:hidden}.caret{display:inline-block;width:0;height:0;margin-left:2px;vertical-align:middle;border-top:4px solid;border-right:4px solid transparent;border-left:4px solid transparent}.dropdown{position:relative}.dropdown-menu{position:absolute;top:100%;left:0;z-index:1000;display:none;float:left;min-width:160px;padding:5px 0;margin:2px 0 0;font-size:14px;text-align:left;list-style:none;background-color:#fff;-webkit-background-clip:padding-box;background-clip:padding-box;border:1px solid #ccc;border:1px solid rgba(0,0,0,0.15);border-radius:4px;-webkit-box-shadow:0 6px 12px rgba(0,0,0,0.175);box-shadow:0 6px 12px rgba(0,0,0,0.175)}.dropdown-menu .divider{height:1px;margin:9px 0;overflow:hidden;background-color:#e5e5e5}.dropdown-menu>li>a{display:block;padding:3px 20px;clear:both;font-weight:400;line-height:1.42857143;color:#333;white-space:nowrap}@media (min-width:768px){.navbar-right .dropdown-menu{right:0;left:auto}}.nav{padding-left:0;margin-bottom:0;list-style:none}.nav>li{position:relative;display:block}.nav>li>a{position:relative;display:block;padding:10px 15px}.navbar{position:relative;min-height:50px;margin-bottom:20px;border:1px solid transparent}@media (min-width:768px){.navbar{border-radius:4px}}@media (min-width:768px){.navbar-header{float:left}}.navbar-collapse{padding-right:15px;padding-left:15px;overflow-x:visible;-webkit-overflow-scrolling:touch;border-top:1px solid transparent;-webkit-box-shadow:inset 0 1px 0 rgba(255,255,255,0.1);box-shadow:inset 0 1px 0 rgba(255,255,255,0.1)}@media (min-width:768px){.navbar-collapse{width:auto;border-top:0;-webkit-box-shadow:none;box-shadow:none}.navbar-collapse.collapse{display:block!important;height:auto!important;padding-bottom:0;overflow:visible!important;visibility:visible!important}}.navbar-brand{float:left;height:50px;padding:15px 15px;font-size:18px;line-height:20px}.navbar-toggle{position:relative;float:right;padding:9px 10px;margin-top:8px;margin-right:15px;margin-bottom:8px;background-color:transparent;background-image:none;border:1px solid transparent;border-radius:4px}.navbar-toggle .icon-bar{display:block;width:22px;height:2px;border-radius:1px}.navbar-toggle .icon-bar + .icon-bar{margin-top:4px}@media (min-width:768px){.navbar-toggle{display:none}}.navbar-nav{margin:7.5px -15px}.navbar-nav>li>a{padding-top:10px;padding-bottom:10px;line-height:20px}@media (min-width:768px){.navbar-nav{float:left;margin:0}.navbar-nav>li{float:left}.navbar-nav>li>a{padding-top:15px;padding-bottom:15px}}.navbar-nav>li>.dropdown-menu{margin-top:0;border-top-left-radius:0;border-top-right-radius:0}.navbar-text{margin-top:15px;margin-bottom:15px}@media (min-width:768px){.navbar-text{float:left;margin-right:15px;margin-left:15px}}@media (min-width:768px){.navbar-left{float:left!important}.navbar-right{float:right!important;margin-right:-15px}}.navbar-inverse{background-color:#222;border-color:#080808}.navbar-inverse .navbar-brand{color:#9d9d9d}.navbar-inverse .navbar-text{color:#9d9d9d}.navbar-inverse .navbar-nav>li>a{color:#9d9d9d}.navbar-inverse .navbar-toggle{border-color:#333}.navbar-inverse .navbar-toggle .icon-bar{background-color:#fff}.navbar-inverse .navbar-collapse{border-color:#101010}.carousel{position:relative}.carousel-inner{position:relative;width:100%;overflow:hidden}.carousel-inner>.item{position:relative;display:none}.carousel-inner>.item>img{line-height:1}@media all and (transform-3d),(-webkit-transform-3d){.carousel-inner>.item{-webkit-backface-visibility:hidden;backface-visibility:hidden;-webkit-perspective:1000;perspective:1000}.carousel-inner>.item.active{left:0;-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}}.carousel-inner>.active{display:block}.carousel-inner>.active{left:0}.carousel-indicators{position:absolute;bottom:10px;left:50%;z-index:15;width:60%;padding-left:0;margin-left:-30%;text-align:center;list-style:none}.carousel-indicators li{display:inline-block;width:10px;height:10px;margin:1px;text-indent:-999px;background-color:#000 \9;background-color:rgba(0,0,0,0);border:1px solid #fff;border-radius:10px}.carousel-indicators .active{width:12px;height:12px;margin:0;background-color:#fff}@media screen and (min-width:768px){.carousel-indicators{bottom:20px}}.clearfix:after,.clearfix:before,.container-fluid:after,.container-fluid:before,.nav:after,.nav:before,.navbar-collapse:after,.navbar-collapse:before,.navbar-header:after,.navbar-header:before,.navbar:after,.navbar:before,.row:after,.row:before{display:table;content:" "}.clearfix:after,.container-fluid:after,.nav:after,.navbar-collapse:after,.navbar-header:after,.navbar:after,.row:after{clear:both}.center-block{display:block;margin-right:auto;margin-left:auto}.hidden{display:none!important;visibility:hidden!important}@-ms-viewport{width:device-width}html,body{overflow:hidden}.panel-wrapper{white-space:nowrap}.panel-wrapper>div{white-space:normal}.left-panel{width:100%;height:100vh;float:left;overflow:auto;-webkit-overflow-scrolling:touch;position:relative;-webkit-box-shadow:0 15px 10px 5px #0f0f0f;-moz-box-shadow:0 15px 10px 5px #0f0f0f;box-shadow:0 15px 10px 5px #0f0f0f;z-index:5}.right-panel{width:50%;height:100vh;display:inline-block;overflow:hidden}.editor-container{height:100%}.editor-container .fa{color:#f9f9f9;position:absolute}.editor-container button{background:#fff;border:none;border-radius:2px;padding:4px 10px;color:#555;box-shadow:0 0 3px #555;position:absolute;outline:none}.editor-container button.show-editor{top:25%;right:0;z-index:5;border-top-right-radius:0;border-bottom-right-radius:0;padding-left:6px}.editor-container button.show-editor:before,.editor-container button.show-editor:after{position:relative;top:1px}@supports (-ms-ime-align:auto){.editor-container button.show-editor:before,.editor-container button.show-editor:after{color:#ff0!important}}.editor-container button.show-editor:before{content:'\002329';right:4px}@-moz-document url-prefix(){.show-editor{padding-left:9px!important}.show-editor:before,.show-editor:after{top:-1px!important}.show-editor:before{right:1px!important}.show-editor:after{left:1px!important}}@supports (-ms-ime-align:auto){.show-editor{padding-left:9px!important}.show-editor:before,.show-editor:after{top:-1px!important}.show-editor:before{right:1px!important}.show-editor:after{left:1px!important}}@media (max-width:820px){.left-panel{width:100%!important}.right-panel{display:none}}.ic-alert{font-size:17px;background-color:#ffffb8;padding:25px 10px 10px;-webkit-box-shadow:0 0 10px rgba(51,51,51,0.2);-moz-box-shadow:0 0 10px rgba(51,51,51,0.2);box-shadow:0 0 10px rgba(51,51,51,0.2)}.ic-alert.ic-alert-email-newsletter-signup{position:fixed;right:0;top:0;z-index:20}.ic-alert.ic-alert-email-newsletter-signup .ic-alert-content{max-width:500px}.ic-alert.ic-alert-email-newsletter-signup .the-form{margin-top:23px}.ic-alert.ic-alert-email-newsletter-signup .close-p{margin-top:10px}.ic-alert.ic-alert-email-newsletter-signup .reassurance{font-size:12px}.ic-alert .ic-alert-content{max-width:700px;margin:auto}.ic-alert .ic-alert-content p{font-size:17px}.ic-alert .ic-alert-content p:last-child{padding-bottom:0;margin-bottom:0}.login-btns{max-width:235px;margin:auto}.login-btns .btn{width:auto;display:block;height:44px;line-height:29px;margin:14px 5px;text-align:left}.login-btns i{width:23px;font-size:26px;margin:3px 11px 0;vertical-align:top}.login-btns .company{margin-left:12px}.login-btns .bar{color:rgba(183,183,183,0.4)}.login-reassurance{display:block;margin:0;padding:0;text-align:center}.align-to-sections{margin:auto;max-width:700px;padding-left:10px;padding-right:10px}img.mug{float:left;margin-right:20px;margin-bottom:20px;height:100px;width:100px;border-radius:50px;-moz-border-radius:50px;-webkit-border-radius:50px;-o-border-radius:50px}.testimonials .carousel{display:table;margin-bottom:0}.testimonials .carousel .mug{position:absolute;margin:auto;top:0;bottom:0}.testimonials .carousel .carousel-inner{overflow:visible}@media (max-width:400px){.testimonials .carousel .carousel-inner .mug{width:85px;height:85px}.testimonials .carousel .carousel-inner .testimonial .quote{padding-left:106px!important;font-size:14px!important}}.testimonials .carousel .carousel-inner .testimonial{display:table;height:100%}.testimonials .carousel .carousel-inner .testimonial .quote{font-style:italic;font-size:14.5px;line-height:24px;padding-left:119px;display:table-cell;vertical-align:middle;padding-bottom:38px}.testimonials .carousel .carousel-inner .testimonial .got-the-job{font-size:17px;display:table-row;height:38px}.testimonials .carousel .mug-indicators{margin:0;left:0;bottom:-15px;position:absolute;width:100%}.testimonials .carousel .mug-indicators li{border-color:transparent;margin:8px}@media (max-width:320px){.testimonials .carousel .mug-indicators li{margin:7px!important}}.testimonials .carousel .mug-indicators li.active{background:transparent;height:10px;width:10px;margin:8px 15px}.testimonials .carousel .mug-indicators li.active img{opacity:1;left:-12px;top:-12px;height:33px;width:33px;border-radius:33px;-moz-border-radius:33px;-webkit-border-radius:33px;-o-border-radius:33px;z-index:2;border:none;-webkit-box-shadow:0 0 4px #3d3d3d;-moz-box-shadow:0 0 4px #3d3d3d;box-shadow:0 0 4px #3d3d3d}.testimonials .carousel .mug-indicators li img{height:23px;width:23px;border-radius:23px;-moz-border-radius:23px;-webkit-border-radius:23px;-o-border-radius:23px;float:left;position:relative;left:-7px;top:-8px;opacity:0.3}.testimonials .carousel.fade{opacity:1}.testimonials .carousel.fade .item{display:block!important;position:absolute;left:0!important;top:0;width:100%;opacity:0;z-index:1}.testimonials .carousel.fade .item:first-child{top:auto;position:relative}.testimonials .carousel.fade .item.active{opacity:1;z-index:2}.full-width-testimonials .carousel{margin-bottom:-4px}.full-width-testimonials .carousel .item{height:160px}@media (max-width:564px){.full-width-testimonials .carousel .item{height:174px}}@media (max-width:470px){.full-width-testimonials .carousel .item{height:197px}}@media (max-width:416px){.full-width-testimonials .carousel .item{height:222px}}@media (max-width:320px){.full-width-testimonials .carousel .item{height:293px}}.full-width-testimonials .carousel .mug{height:97px;width:97px;border-radius:97px;-moz-border-radius:97px;-webkit-border-radius:97px;-o-border-radius:97px}.full-width-testimonials .carousel .got-the-job{font-size:16px!important;margin-bottom:12px}.home .section-wrapper.proof .section{padding-top:40px;padding-bottom:30px}.home .section-wrapper.proof .section .logos{text-align:center;margin:51px auto 0}.home .section-wrapper.proof .section .logos .disclaimer{margin-bottom:-20px;padding-top:10px}.home .section-wrapper.proof .section .logos .disclaimer p{color:grey;font-size:13px}.share-btns.share-btns-quiz-end{line-height:normal;text-align:center;padding-bottom:25px}.custom-share{display:inline-block;width:92px;height:34px;border-radius:17px;-moz-border-radius:17px;-webkit-border-radius:17px;-o-border-radius:17px;color:#fff;text-decoration:none;text-align:center;font-size:14px;word-spacing:5px;padding-top:7px;margin:0 2px;font-weight:100}.custom-share:link,.custom-share:visited{color:#fff;text-decoration:none}.custom-share.facebook-share{background:#4c67a1}.custom-share.twitter-share{background:#55acee}.custom-share.linkedin-share{background:#0077b5}.fb-like{overflow:hidden}.fb-social-proof-widget-wrapper{text-align:center;margin-top:20px;overflow:hidden}.fb-social-proof-widget-wrapper .fb-social-proof-widget{margin:auto}[ng-cloak]{display:none!important}body{background-color:#fff}h1,h2,h3,h4,h5,.h2{font-weight:700;color:#555;letter-spacing:-1px}#footer{background:-webkit-linear-gradient(#f7f7f7,#fff);background:-o-linear-gradient(#f7f7f7,#fff);background:-moz-linear-gradient(#f7f7f7,#fff);background:linear-gradient(#f7f7f7,#fff);text-align:center;font-size:11px;line-height:20px;margin-top:100px;margin-bottom:10px;clear:both;color:#707070;padding:10px}@media (max-width:320px){#footer{font-size:9px;line-height:14px}}#footer .links{text-align:left;max-width:700px;margin:auto}#footer .links ul li{font-size:13px}#footer .social-media{margin:0 0 10px}#footer .social-media a{display:inline-block;border-radius:13px;-moz-border-radius:13px;-webkit-border-radius:13px;-o-border-radius:13px;color:#fff;font-size:17px;width:26px;height:26px;line-height:26.78px;margin:0 3.5px;letter-spacing:-0.5px}#footer .social-media a.facebook{background:#4c67a1}#footer .social-media a.twitter{background:#55acee}#footer .social-media .fa-facebook{top:1px;position:relative}#footer .newsletter-link{font-size:16px;line-height:30px;display:inline-block;margin-bottom:10px}.article{font-size:15px;color:#555}.article p,.article li{line-height:24px}.article .section-wrapper.heading h1{font-size:52px;margin:0 0 15px -3px}@media (max-width:480px){.article .section-wrapper.heading h1{font-size:30px}}@media (max-width:320px){.article .section-wrapper.heading h1{font-size:32px}}.article .section-wrapper.heading h2{font-weight:400}.article .section-wrapper.heading .section>p:first-of-type{margin-top:40px}@media (max-width:767px){.article .section-wrapper.heading .section>p:first-of-type{margin:15px 0}}.article h2{margin:0 0 10px;font-size:29px;padding:6px 0 15px;line-height:35px}@media (max-width:480px){.article h2{font-size:18.75px;line-height:30px}}.article .section-wrapper{padding:50px 0}@media (max-width:320px){.article .section-wrapper{padding:25px 0}}.article .section-wrapper.heading{padding:100px 0}@media (max-width:767px){.article .section-wrapper.heading{padding:25px 0}}.article .section-wrapper.heading.header-extension{text-align:center;background-color:#5bc0de;color:#fff}.article .section-wrapper.heading.header-extension a{color:#fff;font-weight:700}.article .section-wrapper.heading.header-extension h1,.article .section-wrapper.heading.header-extension h2{color:#fff}.article .section-wrapper.slim{padding:0}.article .section-wrapper .section{margin:auto;max-width:700px;padding:10px}.article .section-wrapper.widest .section{max-width:none}.article .section-wrapper.wider .section{max-width:1050px}@media (max-width:767px){.article .section-wrapper.wider .section{margin:auto}}.article .section-wrapper a.get-started{margin:20px 0}.article.home .section-wrapper.heading{padding-bottom:20px;text-align:center;background-color:#5bc0de}.article.home .section-wrapper.heading p,.article.home .section-wrapper.heading strong,.article.home .section-wrapper.heading h1{text-align:center;color:#fff}.article.home .section-wrapper.heading p{font-size:19px;margin-bottom:15px;line-height:30px}@media (max-width:496px){.article.home .section-wrapper.heading h1{font-size:41px;line-height:48px}.article.home .section-wrapper.heading p{font-size:17px;line-height:24px}}@media (max-width:320px){.article.home .section-wrapper.heading h1{font-size:37px;line-height:44px}}.section-wrapper.heading.header-extension a.get-started{line-height:37px;margin:50px auto 60px;border:2px solid #fff}.inline-testimonial{font-size:16px;line-height:32px;padding:15px;display:inline-block;background-color:#fff;margin:15px auto;position:relative}.inline-testimonial .text{display:inline-block;max-width:640px;text-align:left}.inline-testimonial .author{margin:0 0 0 11px;color:rgba(112,112,112,0.62);font-style:italic;display:inline-block}.inline-testimonial .image-wrapper{text-align:center}.inline-testimonial img{border-radius:50%;height:100px;width:100px;border:4px solid #fff;margin:5px}.inline-testimonial .quotation-mark{color:#ccc;vertical-align:bottom;font-family:times new roman;line-height:0;margin:0 10px 10px 0;font-size:70px}.inline-testimonial.wider .text{max-width:650px}@media (max-width:850px){.inline-testimonial{background-color:transparent}.inline-testimonial img{position:relative!important;height:90px;width:90px;border:0}.inline-testimonial .text-with-image{display:inline}}.quotation-mark{color:#ccc;vertical-align:bottom;font-family:times new roman;line-height:0;margin:0 10px 10px 0;font-size:70px}.article .section-wrapper.heading,.article.home .section-wrapper.heading{padding:30px 0}.article .section-wrapper.heading h1,.article.home .section-wrapper.heading h1{margin:0;padding:0 0 5px}@media (max-width:320px){.article .section-wrapper.heading h1,.article.home .section-wrapper.heading h1{padding-bottom:6px}}.article .section-wrapper.heading h2,.article.home .section-wrapper.heading h2{margin:0;padding:0;font-size:22px;line-height:30px}@media (max-width:320px){.article .section-wrapper.heading h2,.article.home .section-wrapper.heading h2{font-size:19px;line-height:27px}}.article .section-wrapper.heading p:first-of-type,.article.home .section-wrapper.heading p:first-of-type{margin:0;padding:10px 0 0}.article .section-wrapper.heading a.btn.get-started,.article.home .section-wrapper.heading a.btn.get-started{margin:30px 0 0}.shaded{background-color:#f7f7f7}.modal .close{position:absolute;top:5px;right:5px}.modal h3{text-align:center;margin:5px 0}.full-access-badge{color:#ff0}.navbar{margin-bottom:0;background-color:#5bc0de;border-radius:0;-moz-border-radius:0;-webkit-border-radius:0;-o-border-radius:0;border:0;color:#fff}.navbar .nav.navbar-nav a,.navbar .nav.navbar-nav p{color:#fff;font-size:14px}.navbar .dropdown.tips .dropdown-menu li a{padding-top:7px;padding-bottom:7px}.navbar:not(.print-header) .navbar-brand{margin-right:20px;padding-left:25px;margin-left:10px}.navbar.print-header .navbar-brand img.logo{display:inline-block;margin:0;margin-top:-5px;padding:0}.navbar .navbar-brand{color:#fff;font-weight:700;letter-spacing:-1px;font-size:20px}.navbar .nav.navbar-nav>li>a{text-decoration:none;font-weight:400}.navbar .nav.navbar-nav>li>a.upgrade{font-size:1.1em;padding-top:-5px;font-weight:700;color:#fff}.navbar .nav.navbar-nav>li>a.upgrade:after{content:"";position:absolute;top:0;right:0;width:100%;border-top:3px solid #ffffad}.navbar .navbar-collapse{border-top:0}.navbar button.navbar-toggle{border-color:#fff}.navbar p.navbar-text{color:#fff}.btn.btn-branded{background-color:#5bc0de;color:#fff}.btn.btn-bold{font-weight:700}.btn.btn-default{background:0 0;color:#555}.btn.btn-lg{height:45px;font-weight:700;border-radius:22.5px;-moz-border-radius:22.5px;-webkit-border-radius:22.5px;-o-border-radius:22.5px}.btn.btn-lg.get-started{font-size:18px;height:40px;line-height:40px;border-radius:20px;-moz-border-radius:20px;-webkit-border-radius:20px;-o-border-radius:20px;vertical-align:middle;padding:0 20px}.btn.btn-rarr:after{content:" \27A1"}#select-language-content-width-hack{border:none;font-weight:300;font-size:11px;padding-right:13px;-webkit-appearance:none;-moz-appearance:none;appearance:none}div[code-block]{padding-bottom:0;margin-bottom:18px;display:block;width:auto;position:relative;background:#fbfbfb}.right-drawer{max-width:300px;top:0;right:0;padding:25px;-webkit-box-shadow:0 0 30px rgba(51,51,51,0.8);-moz-box-shadow:0 0 30px rgba(51,51,51,0.8);box-shadow:0 0 30px rgba(51,51,51,0.8);border-radius:0 0 0 20px;-moz-border-radius:0 0 0 20px;-webkit-border-radius:0 0 0 20px;-o-border-radius:0 0 0 20px}@media (max-width:300px){.right-drawer{border-radius:0 0 0 0;-moz-border-radius:0 0 0 0;-webkit-border-radius:0 0 0 0;-o-border-radius:0 0 0 0}}.quiz .card .btn-sets{margin-top:25px;text-align:center}.quiz .card .btn-sets .prompt{font-size:17px}.quiz .card .btn-sets .btn{height:45px;line-height:45px;margin:0 0 8px;padding:0 20px;border-radius:22.5px;-moz-border-radius:22.5px;-webkit-border-radius:22.5px;-o-border-radius:22.5px;background:0 0}.quiz .card .btn-sets .btn .text{font-size:15px}.quiz .card .question-end-outside-course-bottom-cta{text-align:center;margin:75px auto 150px}.quiz .card .sections{font-family:lora,Georgia,serif;font-size:15px;line-height:26px;color:#555;background-color:#f7f7f7;margin-top:30px}.quiz .card strong{font-weight:700}.quiz p{font-size:30px;color:#555}@-webkit-keyframes background-blue-breathe{0%,100%{background-color:#5bc0de}50%{background-color:rgba(91,192,222,0.8)}}@-moz-keyframes background-blue-breathe{0%,100%{background-color:#5bc0de}50%{background-color:rgba(91,192,222,0.8)}}@-ms-keyframes background-blue-breathe{0%,100%{background-color:#5bc0de}50%{background-color:rgba(91,192,222,0.8)}}@-o-keyframes background-blue-breathe{0%,100%{background-color:#5bc0de}50%{background-color:rgba(91,192,222,0.8)}}@keyframes background-blue-breathe{0%,100%{background-color:#5bc0de}50%{background-color:rgba(91,192,222,0.8)}}.btn.get-started{-moz-animation:background-blue-breathe 2s infinite alternate ease-in-out 4s both;-webkit-animation:background-blue-breathe 2s infinite alternate ease-in-out 4s both;-o-animation:background-blue-breathe 2s infinite alternate ease-in-out 4s both;-ms-animation:background-blue-breathe 2s infinite alternate ease-in-out 4s both;animation:background-blue-breathe 2s infinite alternate ease-in-out 4s both}.box-shadowed-light{background-color:rgba(200,200,200,0.2);-webkit-box-shadow:0 0 10px 4px rgba(200,200,200,0.2);-moz-box-shadow:0 0 10px 4px rgba(200,200,200,0.2);box-shadow:0 0 10px 4px rgba(200,200,200,0.2);padding:1px}#loading{display:none;position:fixed;top:50%;width:100%;margin:0;padding:0;text-align:center;font-size:30px;font-weight:700;color:#707070}@-webkit-keyframes fade-in{0%{opacity:0}100%{opacity:1}}@-moz-keyframes fade-in{0%{opacity:0}100%{opacity:1}}@-ms-keyframes fade-in{0%{opacity:0}100%{opacity:1}}@-o-keyframes fade-in{0%{opacity:0}100%{opacity:1}}@keyframes fade-in{0%{opacity:0}100%{opacity:1}}.below-nav{-moz-animation:fade-in 0.25s ease-in-out;-webkit-animation:fade-in 0.25s ease-in-out;-o-animation:fade-in 0.25s ease-in-out;-ms-animation:fade-in 0.25s ease-in-out;animation:fade-in 0.25s ease-in-out}address{margin-bottom:0}@media (max-width:1030px){.navbar-header{float:none}.navbar-left,.navbar-right{float:none!important}.navbar-toggle{display:block}.navbar-collapse{border-top:1px solid transparent;box-shadow:inset 0 1px 0 rgba(255,255,255,0.1)}.navbar-collapse.collapse{display:none!important}.navbar-nav{float:none!important;margin:7.5px 0}.navbar-nav>li{float:none}.navbar-nav>li>a{padding-top:10px;padding-bottom:10px}.navbar-nav>li>p.navbar-text{margin:0;padding:10px 15px}}.header-cta-box{max-width:500px;padding:20px;background-color:#fff;margin:auto;border:solid #ffffb8;border-width:10px 0;margin-top:35px}.header-cta-box h2,.header-cta-box p{text-align:left!important;color:#555!important}.header-cta-box h2{font-sie:20px!important;font-weight:bolder!important}.header-cta-box p{font-size:15px!important;line-height:24px!important;margin-bottom:10px!important}.print-header{display:none}@media (max-width:450px){.input-group,.email-magnet-one-liner .submit{display:block}}@media (max-width:320px){.input-group,.email-magnet-one-liner .submit{font-size:17px!important;padding-left:0!important;padding-right:0!important}}@media (max-width:450px){.submit{width:100%;border-radius:6px!important;margin-top:5px}}@media (max-width:450px){.input-group input{border-radius:6px!important}}#print-footer{display:none}.article .survey h3,.article .survey p{color:#fff!important}.homepage-company-logo{display:inline-block;overflow:hidden;text-indent:-9999px;text-align:left;width:120px;height:90px}.fa{display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;transform:translate(0,0)}</style>
+
+		
+
+    <link rel="apple-touch-icon" href="https://www.interviewcake.com/images/cake_white_on_blue_128_128_unrounded.png">
+
+    
+
+    <meta name="50fc73d52056532c18787976ceb78fddb87b78b2" content="ceb4cec06fc4a780c7b31b85c07cf75d1ca58d9d">
+	<meta name="theme-color" content="#5bc0de">
+<style id="ace_editor.css">.ace_editor {position: relative;overflow: hidden;font: 12px/normal 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;direction: ltr;text-align: left;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}.ace_scroller {position: absolute;overflow: hidden;top: 0;bottom: 0;background-color: inherit;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;cursor: text;}.ace_content {position: absolute;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;min-width: 100%;}.ace_dragging .ace_scroller:before{position: absolute;top: 0;left: 0;right: 0;bottom: 0;content: '';background: rgba(250, 250, 250, 0.01);z-index: 1000;}.ace_dragging.ace_dark .ace_scroller:before{background: rgba(0, 0, 0, 0.01);}.ace_selecting, .ace_selecting * {cursor: text !important;}.ace_gutter {position: absolute;overflow : hidden;width: auto;top: 0;bottom: 0;left: 0;cursor: default;z-index: 4;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;}.ace_gutter-active-line {position: absolute;left: 0;right: 0;}.ace_scroller.ace_scroll-left {box-shadow: 17px 0 16px -16px rgba(0, 0, 0, 0.4) inset;}.ace_gutter-cell {padding-left: 19px;padding-right: 6px;background-repeat: no-repeat;}.ace_gutter-cell.ace_error {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABOFBMVEX/////////QRswFAb/Ui4wFAYwFAYwFAaWGAfDRymzOSH/PxswFAb/SiUwFAYwFAbUPRvjQiDllog5HhHdRybsTi3/Tyv9Tir+Syj/UC3////XurebMBIwFAb/RSHbPx/gUzfdwL3kzMivKBAwFAbbvbnhPx66NhowFAYwFAaZJg8wFAaxKBDZurf/RB6mMxb/SCMwFAYwFAbxQB3+RB4wFAb/Qhy4Oh+4QifbNRcwFAYwFAYwFAb/QRzdNhgwFAYwFAbav7v/Uy7oaE68MBK5LxLewr/r2NXewLswFAaxJw4wFAbkPRy2PyYwFAaxKhLm1tMwFAazPiQwFAaUGAb/QBrfOx3bvrv/VC/maE4wFAbRPBq6MRO8Qynew8Dp2tjfwb0wFAbx6eju5+by6uns4uH9/f36+vr/GkHjAAAAYnRSTlMAGt+64rnWu/bo8eAA4InH3+DwoN7j4eLi4xP99Nfg4+b+/u9B/eDs1MD1mO7+4PHg2MXa347g7vDizMLN4eG+Pv7i5evs/v79yu7S3/DV7/498Yv24eH+4ufQ3Ozu/v7+y13sRqwAAADLSURBVHjaZc/XDsFgGIBhtDrshlitmk2IrbHFqL2pvXf/+78DPokj7+Fz9qpU/9UXJIlhmPaTaQ6QPaz0mm+5gwkgovcV6GZzd5JtCQwgsxoHOvJO15kleRLAnMgHFIESUEPmawB9ngmelTtipwwfASilxOLyiV5UVUyVAfbG0cCPHig+GBkzAENHS0AstVF6bacZIOzgLmxsHbt2OecNgJC83JERmePUYq8ARGkJx6XtFsdddBQgZE2nPR6CICZhawjA4Fb/chv+399kfR+MMMDGOQAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: 2px center;}.ace_gutter-cell.ace_warning {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAmVBMVEX///8AAAD///8AAAAAAABPSzb/5sAAAAB/blH/73z/ulkAAAAAAAD85pkAAAAAAAACAgP/vGz/rkDerGbGrV7/pkQICAf////e0IsAAAD/oED/qTvhrnUAAAD/yHD/njcAAADuv2r/nz//oTj/p064oGf/zHAAAAA9Nir/tFIAAAD/tlTiuWf/tkIAAACynXEAAAAAAAAtIRW7zBpBAAAAM3RSTlMAABR1m7RXO8Ln31Z36zT+neXe5OzooRDfn+TZ4p3h2hTf4t3k3ucyrN1K5+Xaks52Sfs9CXgrAAAAjklEQVR42o3PbQ+CIBQFYEwboPhSYgoYunIqqLn6/z8uYdH8Vmdnu9vz4WwXgN/xTPRD2+sgOcZjsge/whXZgUaYYvT8QnuJaUrjrHUQreGczuEafQCO/SJTufTbroWsPgsllVhq3wJEk2jUSzX3CUEDJC84707djRc5MTAQxoLgupWRwW6UB5fS++NV8AbOZgnsC7BpEAAAAABJRU5ErkJggg==");background-position: 2px center;}.ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAJ0Uk5TAAB2k804AAAAPklEQVQY02NgIB68QuO3tiLznjAwpKTgNyDbMegwisCHZUETUZV0ZqOquBpXj2rtnpSJT1AEnnRmL2OgGgAAIKkRQap2htgAAAAASUVORK5CYII=");background-position: 2px center;}.ace_dark .ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAJFBMVEUAAAChoaGAgIAqKiq+vr6tra1ZWVmUlJSbm5s8PDxubm56enrdgzg3AAAAAXRSTlMAQObYZgAAAClJREFUeNpjYMAPdsMYHegyJZFQBlsUlMFVCWUYKkAZMxZAGdxlDMQBAG+TBP4B6RyJAAAAAElFTkSuQmCC");}.ace_scrollbar {position: absolute;right: 0;bottom: 0;z-index: 6;}.ace_scrollbar-inner {position: absolute;cursor: text;left: 0;top: 0;}.ace_scrollbar-v{overflow-x: hidden;overflow-y: scroll;top: 0;}.ace_scrollbar-h {overflow-x: scroll;overflow-y: hidden;left: 0;}.ace_print-margin {position: absolute;height: 100%;}.ace_text-input {position: absolute;z-index: 0;width: 0.5em;height: 1em;opacity: 0;background: transparent;-moz-appearance: none;appearance: none;border: none;resize: none;outline: none;overflow: hidden;font: inherit;padding: 0 1px;margin: 0 -1px;text-indent: -1em;-ms-user-select: text;-moz-user-select: text;-webkit-user-select: text;user-select: text;white-space: pre!important;}.ace_text-input.ace_composition {background: inherit;color: inherit;z-index: 1000;opacity: 1;text-indent: 0;}.ace_layer {z-index: 1;position: absolute;overflow: hidden;word-wrap: normal;white-space: pre;height: 100%;width: 100%;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;pointer-events: none;}.ace_gutter-layer {position: relative;width: auto;text-align: right;pointer-events: auto;}.ace_text-layer {font: inherit !important;}.ace_cjk {display: inline-block;text-align: center;}.ace_cursor-layer {z-index: 4;}.ace_cursor {z-index: 4;position: absolute;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;border-left: 2px solid;transform: translatez(0);}.ace_multiselect .ace_cursor {border-left-width: 1px;}.ace_slim-cursors .ace_cursor {border-left-width: 1px;}.ace_overwrite-cursors .ace_cursor {border-left-width: 0;border-bottom: 1px solid;}.ace_hidden-cursors .ace_cursor {opacity: 0.2;}.ace_smooth-blinking .ace_cursor {-webkit-transition: opacity 0.18s;transition: opacity 0.18s;}.ace_marker-layer .ace_step, .ace_marker-layer .ace_stack {position: absolute;z-index: 3;}.ace_marker-layer .ace_selection {position: absolute;z-index: 5;}.ace_marker-layer .ace_bracket {position: absolute;z-index: 6;}.ace_marker-layer .ace_active-line {position: absolute;z-index: 2;}.ace_marker-layer .ace_selected-word {position: absolute;z-index: 4;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;}.ace_line .ace_fold {-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;display: inline-block;height: 11px;margin-top: -2px;vertical-align: middle;background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACJJREFUeNpi+P//fxgTAwPDBxDxD078RSX+YeEyDFMCIMAAI3INmXiwf2YAAAAASUVORK5CYII=");background-repeat: no-repeat, repeat-x;background-position: center center, top left;color: transparent;border: 1px solid black;border-radius: 2px;cursor: pointer;pointer-events: auto;}.ace_dark .ace_fold {}.ace_fold:hover{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACBJREFUeNpi+P//fz4TAwPDZxDxD5X4i5fLMEwJgAADAEPVDbjNw87ZAAAAAElFTkSuQmCC");}.ace_tooltip {background-color: #FFF;background-image: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.1));background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1));border: 1px solid gray;border-radius: 1px;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);color: black;max-width: 100%;padding: 3px 4px;position: fixed;z-index: 999999;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;cursor: default;white-space: pre;word-wrap: break-word;line-height: normal;font-style: normal;font-weight: normal;letter-spacing: normal;pointer-events: none;}.ace_folding-enabled > .ace_gutter-cell {padding-right: 13px;}.ace_fold-widget {-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;margin: 0 -12px 0 1px;display: none;width: 11px;vertical-align: top;background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42mWKsQ0AMAzC8ixLlrzQjzmBiEjp0A6WwBCSPgKAXoLkqSot7nN3yMwR7pZ32NzpKkVoDBUxKAAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: center;border-radius: 3px;border: 1px solid transparent;cursor: pointer;}.ace_folding-enabled .ace_fold-widget {display: inline-block;   }.ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42m3HwQkAMAhD0YzsRchFKI7sAikeWkrxwScEB0nh5e7KTPWimZki4tYfVbX+MNl4pyZXejUO1QAAAABJRU5ErkJggg==");}.ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAGCAYAAAAG5SQMAAAAOUlEQVR42jXKwQkAMAgDwKwqKD4EwQ26sSOkVWjgIIHAzPiCgaqiqnJHZnKICBERHN194O5b9vbLuAVRL+l0YWnZAAAAAElFTkSuQmCCXA==");}.ace_fold-widget:hover {border: 1px solid rgba(0, 0, 0, 0.3);background-color: rgba(255, 255, 255, 0.2);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);}.ace_fold-widget:active {border: 1px solid rgba(0, 0, 0, 0.4);background-color: rgba(0, 0, 0, 0.05);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);}.ace_dark .ace_fold-widget {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHklEQVQIW2P4//8/AzoGEQ7oGCaLLAhWiSwB146BAQCSTPYocqT0AAAAAElFTkSuQmCC");}.ace_dark .ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAH0lEQVQIW2P4//8/AxQ7wNjIAjDMgC4AxjCVKBirIAAF0kz2rlhxpAAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAFCAYAAACAcVaiAAAAHElEQVQIW2P4//+/AxAzgDADlOOAznHAKgPWAwARji8UIDTfQQAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget:hover {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);background-color: rgba(255, 255, 255, 0.1);}.ace_dark .ace_fold-widget:active {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);}.ace_fold-widget.ace_invalid {background-color: #FFB4B4;border-color: #DE5555;}.ace_fade-fold-widgets .ace_fold-widget {-webkit-transition: opacity 0.4s ease 0.05s;transition: opacity 0.4s ease 0.05s;opacity: 0;}.ace_fade-fold-widgets:hover .ace_fold-widget {-webkit-transition: opacity 0.05s ease 0.05s;transition: opacity 0.05s ease 0.05s;opacity:1;}.ace_underline {text-decoration: underline;}.ace_bold {font-weight: bold;}.ace_nobold .ace_bold {font-weight: normal;}.ace_italic {font-style: italic;}.ace_error-marker {background-color: rgba(255, 0, 0,0.2);position: absolute;z-index: 9;}.ace_highlight-marker {background-color: rgba(255, 255, 0,0.2);position: absolute;z-index: 8;}.ace_br1 {border-top-left-radius    : 3px;}.ace_br2 {border-top-right-radius   : 3px;}.ace_br3 {border-top-left-radius    : 3px; border-top-right-radius:    3px;}.ace_br4 {border-bottom-right-radius: 3px;}.ace_br5 {border-top-left-radius    : 3px; border-bottom-right-radius: 3px;}.ace_br6 {border-top-right-radius   : 3px; border-bottom-right-radius: 3px;}.ace_br7 {border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px;}.ace_br8 {border-bottom-left-radius : 3px;}.ace_br9 {border-top-left-radius    : 3px; border-bottom-left-radius:  3px;}.ace_br10{border-top-right-radius   : 3px; border-bottom-left-radius:  3px;}.ace_br11{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-left-radius:  3px;}.ace_br12{border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br13{border-top-left-radius    : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br14{border-top-right-radius   : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br15{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px;}.ace_text-input-ios {position: absolute !important;top: -100000px !important;left: -100000px !important;}
+/*# sourceURL=ace/css/ace_editor.css */</style><style id="ace-tm">.ace-tm .ace_gutter {background: #f0f0f0;color: #333;}.ace-tm .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-tm .ace_fold {background-color: #6B72E6;}.ace-tm {background-color: #FFFFFF;color: black;}.ace-tm .ace_cursor {color: black;}.ace-tm .ace_invisible {color: rgb(191, 191, 191);}.ace-tm .ace_storage,.ace-tm .ace_keyword {color: blue;}.ace-tm .ace_constant {color: rgb(197, 6, 11);}.ace-tm .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-tm .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-tm .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-tm .ace_invalid {background-color: rgba(255, 0, 0, 0.1);color: red;}.ace-tm .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-tm .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-tm .ace_support.ace_type,.ace-tm .ace_support.ace_class {color: rgb(109, 121, 222);}.ace-tm .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-tm .ace_string {color: rgb(3, 106, 7);}.ace-tm .ace_comment {color: rgb(76, 136, 107);}.ace-tm .ace_comment.ace_doc {color: rgb(0, 102, 255);}.ace-tm .ace_comment.ace_doc.ace_tag {color: rgb(128, 159, 191);}.ace-tm .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-tm .ace_variable {color: rgb(49, 132, 149);}.ace-tm .ace_xml-pe {color: rgb(104, 104, 91);}.ace-tm .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-tm .ace_heading {color: rgb(12, 7, 255);}.ace-tm .ace_list {color:rgb(185, 6, 144);}.ace-tm .ace_meta.ace_tag {color:rgb(0, 22, 142);}.ace-tm .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-tm .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-tm.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px white;}.ace-tm .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-tm .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-tm .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-tm .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-tm .ace_gutter-active-line {background-color : #dcdcdc;}.ace-tm .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-tm .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}
+/*# sourceURL=ace/css/ace-tm */</style><style>    .error_widget_wrapper {        background: inherit;        color: inherit;        border:none    }    .error_widget {        border-top: solid 2px;        border-bottom: solid 2px;        margin: 5px 0;        padding: 10px 40px;        white-space: pre-wrap;    }    .error_widget.ace_error, .error_widget_arrow.ace_error{        border-color: #ff5a5a    }    .error_widget.ace_warning, .error_widget_arrow.ace_warning{        border-color: #F1D817    }    .error_widget.ace_info, .error_widget_arrow.ace_info{        border-color: #5a5a5a    }    .error_widget.ace_ok, .error_widget_arrow.ace_ok{        border-color: #5aaa5a    }    .error_widget_arrow {        position: absolute;        border: solid 5px;        border-top-color: transparent!important;        border-right-color: transparent!important;        border-left-color: transparent!important;        top: -5px;    }</style><style>.ace_snippet-marker {    -moz-box-sizing: border-box;    box-sizing: border-box;    background: rgba(194, 193, 208, 0.09);    border: 1px dotted rgba(211, 208, 235, 0.62);    position: absolute;}</style><style>.ace_editor.ace_autocomplete .ace_marker-layer .ace_active-line {    background-color: #CAD6FA;    z-index: 1;}.ace_editor.ace_autocomplete .ace_line-hover {    border: 1px solid #abbffe;    margin-top: -1px;    background: rgba(233,233,253,0.4);}.ace_editor.ace_autocomplete .ace_line-hover {    position: absolute;    z-index: 2;}.ace_editor.ace_autocomplete .ace_scroller {   background: none;   border: none;   box-shadow: none;}.ace_rightAlignedText {    color: gray;    display: inline-block;    position: absolute;    right: 4px;    text-align: right;    z-index: -1;}.ace_editor.ace_autocomplete .ace_completion-highlight{    color: #000;    text-shadow: 0 0 0.01em;}.ace_editor.ace_autocomplete {    width: 280px;    z-index: 200000;    background: #fbfbfb;    color: #444;    border: 1px lightgray solid;    position: fixed;    box-shadow: 2px 3px 5px rgba(0,0,0,.2);    line-height: 1.4;}</style></head>
+
+<body ng-app="prepApp" ng-init="contentItemIsEmbedded = false" class="user-is-full-access                                      scrolling-body  ng-scope" style="" cz-shortcut-listen="true">
+
+
+
+<div class="ic-alerts">
+    
+</div>
+
+<select id="select-language-content-width-hack" style="display: none;">
+    <option value="">Swift</option>
+</select>
+
+
+
+    
+    
+<div class="print-header navbar-print-header navbar navbar-inverse">
+    <div class="navbar-header">
+        <span class="navbar-brand">
+            <img src="./Hash Table_Hash Map Data Structure _ Interview Cake_files/cake_white_20_21.png" class="logo">
+            Interview Cake
+        </span>
+    </div>
+</div>
+
+
+
+
+    <div class="navbar navbar-normal navbar-inverse ng-scope" role="navigation" ng-controller="HeaderCtrl" language="swift">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://www.interviewcake.com/">
+                Interview Cake
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-left">
+                
+                <li class="dropdown tips">
+                    <a href="https://www.interviewcake.com/concept/swift/hash-map?course=fc1&amp;section=hashing-and-hash-tables" class="dropdown-toggle" data-toggle="dropdown" rel="nofollow">
+                        Interview Tips <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="https://www.interviewcake.com/coding-interview-beginner-faq">
+                                First coding interview? Start here.
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://www.interviewcake.com/coding-interview-tips">
+                                General coding interview tips
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://www.interviewcake.com/tricks-for-getting-unstuck-programming-interview">
+                                How to get un-stuck
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://www.interviewcake.com/impostor-syndrome-in-programming-interviews">
+                                Beating impostor syndrome
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://www.interviewcake.com/24-hours-before-onsite-whiteboard-coding-interview">
+                                24 hours before your onsite
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://www.interviewcake.com/why-youre-hitting-dead-ends-in-whiteboard-interviews">
+                                Why you're hitting dead ends
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://www.interviewcake.com/getting-the-most-from-coding-interview-practice-sessions">
+                                Best ways to practice
+                            </a>
+                        </li>
+
+                        
+
+                        <li>
+                            <a href="https://www.interviewcake.com/coding-interview-timeline-exploding-offers-burnout-negotiation-leverage">
+                                Organizing your interview timeline
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://www.interviewcake.com/behavioral-questions-programming-interview-story-telling">
+                                Mastering behavioral questions
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://www.interviewcake.com/coding-interview-faq">
+                                Common issues
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+                
+
+                <li class="dropdown">
+                    <a href="https://www.interviewcake.com/concept/swift/hash-map?course=fc1&amp;section=hashing-and-hash-tables" class="dropdown-toggle" data-toggle="dropdown" rel="nofollow">
+                        Glossary <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+    <a href="https://www.interviewcake.com/big-o-notation-time-and-space-complexity">Big O Notation: <span complexity="n" class="ng-isolate-scope"><span class="complexity"><span class="ic-math ng-isolate-scope" ng-class="{&#39;block&#39;: isBlock()}" ng-transclude="" math=""><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathdefault" style="margin-right: 0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></span></span></span>, <span complexity="n^2" class="ng-isolate-scope"><span class="complexity"><span class="ic-math ng-isolate-scope" ng-class="{&#39;block&#39;: isBlock()}" ng-transclude="" math=""><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1.06411em; vertical-align: -0.25em;"></span><span class="mord mathdefault" style="margin-right: 0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.814108em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></span></span>, etc</a>
+</li>
+<li>
+    <a href="https://www.interviewcake.com/article/logarithms">Logarithms</a>
+</li>
+<li>
+    <a href="https://www.interviewcake.com/concept/triangular-series">Triangular Series</a>
+</li>
+
+<li role="separator" class="divider"></li>
+
+<li>
+    <a href="https://www.interviewcake.com/concept/binary-search">Binary Search</a>
+</li>
+<li>
+    <a href="https://www.interviewcake.com/concept/bfs">Breadth-First Search</a>
+</li>
+<li>
+    <a href="https://www.interviewcake.com/concept/dfs">Depth-First Search</a>
+</li>
+
+
+
+<li role="separator" class="divider"></li>
+<li>
+    <a href="https://www.interviewcake.com/concept/brute-force">Brute Force Algorithms</a>
+</li>
+<li>
+    <a href="https://www.interviewcake.com/concept/greedy">Greedy Algorithms</a>
+</li>
+<li>
+    <a href="https://www.interviewcake.com/concept/bottom-up">Bottom-Up Algorithms</a>
+</li>
+<li>
+    <a href="https://www.interviewcake.com/concept/overlapping-subproblems">Overlapping Subproblems</a>
+</li>
+<li>
+    <a href="https://www.interviewcake.com/concept/memoization">Memoization</a>
+</li>
+
+<li role="separator" class="divider"></li>
+
+<li>
+    <a href="https://www.interviewcake.com/concept/short-circuit-evaluation">Short Circuit Evaluation</a>
+</li>
+<li>
+    <a href="https://www.interviewcake.com/concept/garbage-collection">Garbage Collection</a>
+</li>
+<li>
+    <a href="https://www.interviewcake.com/concept/js-closure">Closure</a>
+</li>
+<li>
+    <a href="https://www.interviewcake.com/concept/slice">Array Slicing</a>
+</li>
+<li>
+    <a href="https://www.interviewcake.com/concept/hashing">Hashing</a>
+</li>
+<li>
+    <a href="https://www.interviewcake.com/concept/mutable">Mutable vs Immutable</a>
+</li>
+<li>
+    <a href="https://www.interviewcake.com/concept/in-place">In-Place Operation</a>
+</li>
+
+<li role="separator" class="divider"></li>
+
+<li>
+    <a href="https://www.interviewcake.com/article/data-structures-computer-science">Data Structures Overview</a>
+</li>
+
+<li>
+    <a href="https://www.interviewcake.com/concept/array">Array</a>
+</li>
+<li>
+    <a href="https://www.interviewcake.com/concept/dynamic-array">Dynamic Array</a>
+</li>
+<li>
+    <a href="https://www.interviewcake.com/concept/hash-map">Hash Table</a>
+</li>
+<li>
+    <a href="https://www.interviewcake.com/concept/linked-list">Linked List</a>
+</li>
+<li>
+    <a href="https://www.interviewcake.com/concept/queue">Queue</a>
+</li>
+<li>
+    <a href="https://www.interviewcake.com/concept/stack">Stack</a>
+</li>
+<li>
+    <a href="https://www.interviewcake.com/concept/binary-tree">Binary Tree</a>
+</li>
+<li>
+    <a href="https://www.interviewcake.com/concept/graph">Graph</a>
+</li>
+
+<li role="separator" class="divider"></li>
+
+<li>
+    <a href="https://www.interviewcake.com/concept/binary-numbers">Binary Numbers</a>
+</li>
+<li>
+    <a href="https://www.interviewcake.com/concept/and">Bitwise AND</a>
+</li>
+<li>
+    <a href="https://www.interviewcake.com/concept/or">Bitwise OR</a>
+</li>
+<li>
+    <a href="https://www.interviewcake.com/concept/xor">Bitwise XOR</a>
+</li>
+<li>
+    <a href="https://www.interviewcake.com/concept/not">Bitwise NOT</a>
+</li>
+<li>
+    <a href="https://www.interviewcake.com/concept/bit-shift">Bit Shifting</a>
+</li>
+<li>
+    <a href="https://www.interviewcake.com/concept/integer-overflow">Integer Overflow</a>
+</li>
+
+                    </ul>
+                </li>
+
+				
+                <li>
+					
+                        <a href="https://www.interviewcake.com/table-of-contents">Full Course</a>
+                    
+                </li>
+				
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right" ng-show="currentUserSet">
+
+                <li>
+
+					
+
+                    <a class="upgrade ng-hide" ng-hide="currentUser.is_full_access" href="https://www.interviewcake.com/upgrade">
+                        Get the full course
+                        <span class="glyphicon glyphicon-chevron-right full-access-badge"></span>
+                    </a>
+                </li>
+
+                
+                    <li class="dropdown language-dropdown ng-scope" ng-controller="NavbarTranslationCtrl" ng-show="contentLanguage &amp;&amp; currentUser.is_full_access">
+                        <a rel="nofollow" href="https://www.interviewcake.com/concept/swift/hash-map?course=fc1&amp;section=hashing-and-hash-tables" class="dropdown-toggle" data-toggle="dropdown">
+                            <span ng-bind="contentLanguage.display_name" class="ng-binding">Swift</span> <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <!-- ngRepeat: language in contentLanguages | orderBy: 'display_name' --><li ng-repeat="language in contentLanguages | orderBy: &#39;display_name&#39;" class="ng-scope">
+                                <a href="https://www.interviewcake.com/concept/swift/hash-map?course=fc1&amp;section=hashing-and-hash-tables" ng-click="updateLanguage(language, true)" ng-bind="::language.display_name" class="ng-binding">C</a>
+                            </li><!-- end ngRepeat: language in contentLanguages | orderBy: 'display_name' --><li ng-repeat="language in contentLanguages | orderBy: &#39;display_name&#39;" class="ng-scope">
+                                <a href="https://www.interviewcake.com/concept/swift/hash-map?course=fc1&amp;section=hashing-and-hash-tables" ng-click="updateLanguage(language, true)" ng-bind="::language.display_name" class="ng-binding">C#</a>
+                            </li><!-- end ngRepeat: language in contentLanguages | orderBy: 'display_name' --><li ng-repeat="language in contentLanguages | orderBy: &#39;display_name&#39;" class="ng-scope">
+                                <a href="https://www.interviewcake.com/concept/swift/hash-map?course=fc1&amp;section=hashing-and-hash-tables" ng-click="updateLanguage(language, true)" ng-bind="::language.display_name" class="ng-binding">C++</a>
+                            </li><!-- end ngRepeat: language in contentLanguages | orderBy: 'display_name' --><li ng-repeat="language in contentLanguages | orderBy: &#39;display_name&#39;" class="ng-scope">
+                                <a href="https://www.interviewcake.com/concept/swift/hash-map?course=fc1&amp;section=hashing-and-hash-tables" ng-click="updateLanguage(language, true)" ng-bind="::language.display_name" class="ng-binding">Java</a>
+                            </li><!-- end ngRepeat: language in contentLanguages | orderBy: 'display_name' --><li ng-repeat="language in contentLanguages | orderBy: &#39;display_name&#39;" class="ng-scope">
+                                <a href="https://www.interviewcake.com/concept/swift/hash-map?course=fc1&amp;section=hashing-and-hash-tables" ng-click="updateLanguage(language, true)" ng-bind="::language.display_name" class="ng-binding">JavaScript</a>
+                            </li><!-- end ngRepeat: language in contentLanguages | orderBy: 'display_name' --><li ng-repeat="language in contentLanguages | orderBy: &#39;display_name&#39;" class="ng-scope">
+                                <a href="https://www.interviewcake.com/concept/swift/hash-map?course=fc1&amp;section=hashing-and-hash-tables" ng-click="updateLanguage(language, true)" ng-bind="::language.display_name" class="ng-binding">Objective-C</a>
+                            </li><!-- end ngRepeat: language in contentLanguages | orderBy: 'display_name' --><li ng-repeat="language in contentLanguages | orderBy: &#39;display_name&#39;" class="ng-scope">
+                                <a href="https://www.interviewcake.com/concept/swift/hash-map?course=fc1&amp;section=hashing-and-hash-tables" ng-click="updateLanguage(language, true)" ng-bind="::language.display_name" class="ng-binding">PHP</a>
+                            </li><!-- end ngRepeat: language in contentLanguages | orderBy: 'display_name' --><li ng-repeat="language in contentLanguages | orderBy: &#39;display_name&#39;" class="ng-scope">
+                                <a href="https://www.interviewcake.com/concept/swift/hash-map?course=fc1&amp;section=hashing-and-hash-tables" ng-click="updateLanguage(language, true)" ng-bind="::language.display_name" class="ng-binding">Python 2.7</a>
+                            </li><!-- end ngRepeat: language in contentLanguages | orderBy: 'display_name' --><li ng-repeat="language in contentLanguages | orderBy: &#39;display_name&#39;" class="ng-scope">
+                                <a href="https://www.interviewcake.com/concept/swift/hash-map?course=fc1&amp;section=hashing-and-hash-tables" ng-click="updateLanguage(language, true)" ng-bind="::language.display_name" class="ng-binding">Python 3.6 (beta)</a>
+                            </li><!-- end ngRepeat: language in contentLanguages | orderBy: 'display_name' --><li ng-repeat="language in contentLanguages | orderBy: &#39;display_name&#39;" class="ng-scope">
+                                <a href="https://www.interviewcake.com/concept/swift/hash-map?course=fc1&amp;section=hashing-and-hash-tables" ng-click="updateLanguage(language, true)" ng-bind="::language.display_name" class="ng-binding">Ruby</a>
+                            </li><!-- end ngRepeat: language in contentLanguages | orderBy: 'display_name' --><li ng-repeat="language in contentLanguages | orderBy: &#39;display_name&#39;" class="ng-scope">
+                                <a href="https://www.interviewcake.com/concept/swift/hash-map?course=fc1&amp;section=hashing-and-hash-tables" ng-click="updateLanguage(language, true)" ng-bind="::language.display_name" class="ng-binding">Swift</a>
+                            </li><!-- end ngRepeat: language in contentLanguages | orderBy: 'display_name' -->
+                        </ul>
+                    </li>
+                
+
+                
+                    <li>
+                        <p class="navbar-text">
+                            
+                            'sup <a rel="nofollow" tracklink="" the-event="Settings Link Click" href="https://www.interviewcake.com/account" class="ng-isolate-scope">tanya</a>.
+                            
+                            <span ng-show="currentUser.is_full_access" class="glyphicon glyphicon-star full-access-badge"></span>
+                        </p>
+                    </li>
+                    <li ng-hide="currentUser.is_anonymous">
+                        <a rel="nofollow" ng-click="logoutClick($event)" tracklink="" the-event="Logout Link Click" the-properties="{&quot;which&quot; : &quot;header top right&quot;}" href="https://www.interviewcake.com/concept/swift/hash-map?course=fc1&amp;section=hashing-and-hash-tables" class="ng-isolate-scope">Log out</a>
+                    </li>
+                    <li ng-show="currentUser.is_anonymous" class="ng-hide">
+                        <a href="https://www.interviewcake.com/concept/swift/hash-map?course=fc1&amp;section=hashing-and-hash-tables" rel="nofollow" ng-click="loginClick(&#39;header top right&#39;)">Log in to save progress</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+
+    
+
+    <div class="below-nav">
+
+        
+
+        
+        
+
+<div class="article concept-page ng-scope" ng-controller="PrepSeshApp">
+
+
+	
+<div class="toc-widget-wrapper top-widget">
+    <div class="toc-widget">
+        <a href="https://www.interviewcake.com/table-of-contents">← course home</a>
+    </div>
+</div>
+
+
+
+
+
+<div class="section-wrapper heading">
+<div class="section">
+
+
+	<span class="masthead-pic">
+		<div class="diagram ">
+    <img src="./Hash Table_Hash Map Data Structure _ Interview Cake_files/hash_table__preview.svg" height="180" width="300" alt="An array that contains 4 keys and corresponding values: key &quot;apple&quot; has value 4, &quot;cherry&quot; has value 2, &quot;pecan&quot; has value 5 and &quot;blueberry&quot; has value 1.">
+
+
+    
+
+
+	
+
+</div>
+
+	</span>
+
+
+
+<h1>
+    Hash Table
+</h1>
+
+
+	<div class="type">
+        <a href="https://www.interviewcake.com/data-structures-reference">
+            Data Structure
+        </a>
+	</div>
+
+
+
+
+
+
+
+	<div class="other-names">
+		Other names:
+		<br>
+		<span class="list">
+		
+			hash, 
+		
+			hash map, 
+		
+			map, 
+		
+			unordered map, 
+		
+			dictionary
+		
+		</span>
+	</div>
+
+
+
+
+
+
+
+</div>
+</div>
+
+<section class="article-content concept-body">
+
+
+    <div>
+<div class="section-wrapper shaded quick-reference">
+<div class="section">
+<h2>
+Quick reference
+</h2>
+<div class="at-a-glance-table">
+<table class="table">
+<thead>
+<tr>
+<th scope="col"></th>
+<th scope="col">Average</th>
+<th scope="col">Worst Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">space</th>
+<td><span complexity="n" class="ng-isolate-scope"><span class="complexity"><span class="ic-math ng-isolate-scope" ng-class="{&#39;block&#39;: isBlock()}" ng-transclude="" math=""><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathdefault" style="margin-right: 0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></span></span></span></td>
+<td><span complexity="n" class="ng-isolate-scope"><span class="complexity"><span class="ic-math ng-isolate-scope" ng-class="{&#39;block&#39;: isBlock()}" ng-transclude="" math=""><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathdefault" style="margin-right: 0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></span></span></span></td>
+</tr>
+<tr>
+<th scope="row">insert</th>
+<td><span complexity="1" class="ng-isolate-scope"><span class="complexity"><span class="ic-math ng-isolate-scope" ng-class="{&#39;block&#39;: isBlock()}" ng-transclude="" math=""><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathdefault" style="margin-right: 0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span></span></span></td>
+<td><span complexity="n" class="ng-isolate-scope"><span class="complexity"><span class="ic-math ng-isolate-scope" ng-class="{&#39;block&#39;: isBlock()}" ng-transclude="" math=""><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathdefault" style="margin-right: 0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></span></span></span></td>
+</tr>
+<tr>
+<th scope="row">lookup</th>
+<td><span complexity="1" class="ng-isolate-scope"><span class="complexity"><span class="ic-math ng-isolate-scope" ng-class="{&#39;block&#39;: isBlock()}" ng-transclude="" math=""><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathdefault" style="margin-right: 0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span></span></span></td>
+<td><span complexity="n" class="ng-isolate-scope"><span class="complexity"><span class="ic-math ng-isolate-scope" ng-class="{&#39;block&#39;: isBlock()}" ng-transclude="" math=""><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathdefault" style="margin-right: 0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></span></span></span></td>
+</tr>
+<tr>
+<th scope="row">delete</th>
+<td><span complexity="1" class="ng-isolate-scope"><span class="complexity"><span class="ic-math ng-isolate-scope" ng-class="{&#39;block&#39;: isBlock()}" ng-transclude="" math=""><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathdefault" style="margin-right: 0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span></span></span></td>
+<td><span complexity="n" class="ng-isolate-scope"><span class="complexity"><span class="ic-math ng-isolate-scope" ng-class="{&#39;block&#39;: isBlock()}" ng-transclude="" math=""><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathdefault" style="margin-right: 0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></span></span></span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>
+    A <strong>hash table</strong> organizes data so you can quickly
+    look up values for a given
+    key. <span class="ic-words ng-isolate-scope" ng-transclude="" words="concept__hash-map__php-assoc-arrays"></span>
+</p>
+
+
+
+<div class="important-properties">
+<h4>
+        Strengths:
+    </h4>
+<ul>
+<li>
+<strong>Fast lookups</strong>. Lookups
+            take <span complexity="1" class="ng-isolate-scope"><span class="complexity"><span class="ic-math ng-isolate-scope" ng-class="{&#39;block&#39;: isBlock()}" ng-transclude="" math=""><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathdefault" style="margin-right: 0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span></span></span> time <em>on
+            average</em>.
+        </li>
+<li>
+<strong>Flexible keys</strong>. Most data types can be
+            used for keys, as long as
+            they're <a href="https://www.interviewcake.com/concept/hashing">hashable</a>.
+            <span class="ic-words ng-isolate-scope" ng-transclude="" words="concept__hash-map__hash-type-restrictions"></span>
+</li>
+</ul>
+<h4>
+        Weaknesses:
+    </h4>
+<ul>
+<li>
+<strong>Slow worst-case lookups</strong>. Lookups
+            take <span complexity="n" class="ng-isolate-scope"><span class="complexity"><span class="ic-math ng-isolate-scope" ng-class="{&#39;block&#39;: isBlock()}" ng-transclude="" math=""><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathdefault" style="margin-right: 0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></span></span></span>
+            time <em><a href="https://www.interviewcake.com/concept/swift/hash-map?course=fc1&amp;section=hashing-and-hash-tables#when-lookups-cost-o-n">in the worst
+                    case</a></em>.
+        </li>
+<li>
+<strong>Unordered</strong>. Keys aren't stored in a
+            special order. If you're looking for the smallest key, the
+            largest key, or all the keys in a range, you'll need to
+            look through every key to find it.
+        </li>
+<li>
+<strong>Single-directional lookups</strong>. While you can
+            look up the <em>value</em> for a given key
+            in <span complexity="1" class="ng-isolate-scope"><span class="complexity"><span class="ic-math ng-isolate-scope" ng-class="{&#39;block&#39;: isBlock()}" ng-transclude="" math=""><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathdefault" style="margin-right: 0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span></span></span> time, looking up
+            the <em>keys</em> for a given <em>value</em> requires looping
+            through the whole dataset—<span complexity="n" class="ng-isolate-scope"><span class="complexity"><span class="ic-math ng-isolate-scope" ng-class="{&#39;block&#39;: isBlock()}" ng-transclude="" math=""><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathdefault" style="margin-right: 0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></span></span></span>
+            time.
+        </li>
+<li>
+<strong>Not cache-friendly</strong>. Many hash table implementations
+            use <a href="https://www.interviewcake.com/concept/linked-list">linked lists</a>,
+            which don't put data next to each other in memory.
+        </li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section-wrapper">
+<div class="section">
+<h2>
+    In <span class="ic-words ng-isolate-scope" ng-transclude="" words="concept__hash-map__c18n-language"><span class="ng-scope">Swift</span></span>
+</h2>
+<p>
+<span class="ic-words ng-isolate-scope" ng-transclude="" words="concept__hash-map__how-hash-tables-work-in-language"><span class="ng-scope">In </span><span class="ic-words ng-isolate-scope" ng-transclude="" words="concept__hash-map__c18n-language"><span class="ng-scope">Swift</span></span><span class="ng-scope">, hash tables are
+                called </span><span class="ic-words ng-isolate-scope" ng-transclude="" words="concept__hash-map__hash-tables"><span class="ng-scope">dictionaries</span></span><span class="ng-scope">.</span></span>
+</p>
+<div class="clearfix"></div>
+<div class="clearfix"></div>
+<div class="clearfix"></div>
+<div class="clearfix"></div>
+<div class="clearfix"></div>
+<div class="clearfix"></div>
+<div class="clearfix"></div>
+<div class="clearfix"></div>
+<div class="clearfix"></div>
+<div class="clearfix"></div>
+<div code-block="concept__hash-map__hash-map" language="swift" translation-highlighting="dynamic" actual-language="swift" class="ng-isolate-scope"><pre class="  language-swift">  <code class="  language-swift" ng-transclude=""><span class="token keyword">var</span> lightbulbToHoursOfLight<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">String</span><span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
+
+lightbulbToHoursOfLight<span class="token punctuation">[</span><span class="token string">"incandescent"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1200</span>
+lightbulbToHoursOfLight<span class="token punctuation">[</span><span class="token string">"compact fluorescent"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">10000</span>
+lightbulbToHoursOfLight<span class="token punctuation">[</span><span class="token string">"LED"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">50000</span></code>
+</pre>
+<span class="warning-message ng-binding ng-hide" ng-show="warningMessage" ng-bind="warningMessage"></span>
+<div class="select-language-content" ng-hide="staticLanguage">
+<select ng-model="contentLanguage" ng-options="language.display_name for language in contentLanguages | orderBy: &#39;display_name&#39;" ng-change="updateLanguage(contentLanguage)" class="ng-pristine ng-untouched ng-valid" style="width: 37px;"><option value="0" label="C">C</option><option value="1" label="C#">C#</option><option value="2" label="C++">C++</option><option value="3" label="Java">Java</option><option value="4" label="JavaScript">JavaScript</option><option value="5" label="Objective-C">Objective-C</option><option value="6" label="PHP">PHP</option><option value="7" label="Python 2.7">Python 2.7</option><option value="8" label="Python 3.6 (beta)">Python 3.6 (beta)</option><option value="9" label="Ruby">Ruby</option><option value="10" selected="selected" label="Swift">Swift</option></select>
+</div>
+<span class="only-content-language ng-binding ng-hide" ng-show="staticLanguage" ng-bind="onlyLanguage"></span>
+</div>
+<span class="ic-words ng-isolate-scope" ng-transclude="" words="concept__hash-map__javascript-object"></span>
+</div>
+</div>
+<div class="section-wrapper shaded">
+<div class="section">
+<h2>
+    Hash maps are built on arrays
+</h2>
+<p>
+<a href="https://www.interviewcake.com/concept/array">Arrays</a> are pretty similar to hash maps already. Arrays let you
+    quickly look up the value for a given "key" . . . except the keys
+    are called "indices," and we don't get to pick them—they're
+    always sequential integers (0, 1, 2, 3, etc).
+</p>
+<p>
+    Think of a hash map as a "hack" on top of an array to let us use
+    flexible keys instead of being stuck with sequential integer
+    "indices."
+</p>
+<p>
+    All we need is a function to convert a key into an array index (an
+    integer). That function is called a <strong><a href="https://www.interviewcake.com/concept/hashing">hashing
+    function</a></strong>.
+</p>
+
+<div class="diagram ">
+    <img src="./Hash Table_Hash Map Data Structure _ Interview Cake_files/cs_for_hackers__hash_tables_lies_key_labeled.svg" height="254" width="407" alt="A blank array except for a 20, labeled as the value, stored at index 9. To the left the array is the word &quot;lies,&quot; labeled as the key, with an arrow pointing to the right at diamond with a question mark in the middle, labeled as the hashing function. The diamond points to the 9th index of the array.">
+
+
+    
+
+
+	
+
+</div>
+
+
+<p>
+    To look up the value for a given key, we just run the key through
+    our hashing function to get the index to go to in our underlying
+    array to grab the value.
+</p>
+<p>
+    How does that hashing <span class="ic-words ng-isolate-scope" ng-transclude="" words="concept__hash-map__function"><span class="ng-scope">function</span></span> work? There
+    are a few different approaches, and they can get pretty
+    complicated. But here's a simple proof of concept:
+</p>
+<p>
+    Grab the number value for each character and add those up.
+</p>
+
+<div class="diagram ">
+    <img src="./Hash Table_Hash Map Data Structure _ Interview Cake_files/cs_for_hackers__hash_tables_lies_chars.svg" height="79" width="201" alt="The word &quot;lies&quot; in quotes. Arrows point from each character down to their corresponding number values, which are separated by plus signs and shown in sum to equal 429.">
+
+
+    
+
+
+	
+
+</div>
+
+
+<p>
+    The result is 429. But what if we only have <em>30</em> slots in
+    our array? We'll use a common trick for forcing a number into a
+    specific range: the <a href="https://www.interviewcake.com/concept/modulus">modulus operator
+    (<span class="ic-code-inline ng-isolate-scope" ng-transclude="" code-inline="concept__hash-map__modulus"><span class="ng-scope">%</span></span>).</a> Modding our sum by
+    30 ensures we get a whole number that's less than 30 (and at least
+    0):
+</p>
+<span class="ic-math ng-isolate-scope block" ng-class="{&#39;block&#39;: isBlock()}" ng-transclude="" block="" math=""><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>429</mn> <mi mathvariant="normal">%</mi> <mn>30</mn><mo>=</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">
+    429 \: \% \: 30 = 9
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.80556em; vertical-align: -0.05556em;"></span><span class="mord">4</span><span class="mord">2</span><span class="mord">9</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mord">%</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mord">3</span><span class="mord">0</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">9</span></span></span></span></span>
+<p class="aside">
+    The hashing <span class="ic-words ng-isolate-scope" ng-transclude="" words="concept__hash-map__function"><span class="ng-scope">function</span></span>s used in modern systems
+    get pretty complicated—the one we used here is a simplified
+    example.
+</p>
+</div>
+</div>
+<div class="section-wrapper">
+<div class="section">
+<h2>
+    Hash collisions
+</h2>
+<p>
+    What if two keys hash to the same index in our array? In our
+    example above, look at "lies" and "foes":
+</p>
+
+<div class="diagram ">
+    <img src="./Hash Table_Hash Map Data Structure _ Interview Cake_files/cs_for_hackers__hash_tables_lies_and_foes_addition.svg" height="171" width="226" alt="The word &quot;lies&quot; in quotes and the word &quot;foes&quot; in quotes. Arrows point from the characters of each word to their corresponding number values. The sum of the characters of both words is shown to equal 429.">
+
+
+    
+
+
+	
+
+</div>
+
+
+<p>
+    They both sum up to 429! So of course they'll have the same answer when we mod by 30:
+</p>
+<span class="ic-math ng-isolate-scope block" ng-class="{&#39;block&#39;: isBlock()}" ng-transclude="" block="" math=""><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>429</mn> <mi mathvariant="normal">%</mi> <mn>30</mn><mo>=</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">
+    429 \: \% \: 30 = 9
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.80556em; vertical-align: -0.05556em;"></span><span class="mord">4</span><span class="mord">2</span><span class="mord">9</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mord">%</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mord">3</span><span class="mord">0</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">9</span></span></span></span></span>
+<p>
+    This is called a <strong>hash collision</strong>. There are a few
+    different strategies for dealing with them.
+</p>
+<p>
+    Here's a common one: instead of storing the actual values in our
+    array, let's have each array slot hold a <em>pointer</em> to
+    a <em><a href="https://www.interviewcake.com/concept/linked-list">linked list</a></em> holding the values for all the keys that
+    hash to that index:
+</p>
+
+<div class="diagram ">
+    <img src="./Hash Table_Hash Map Data Structure _ Interview Cake_files/cs_for_hackers__hash_tables_hash_collision_key_val.svg" height="254" width="322" alt="An array storing pointers. The pointer at index 9 has an arrow pointing to a linked list to the right of the array. Each linked list node now stores the word as well as its count and a pointer.">
+
+
+    
+
+
+	
+
+</div>
+
+
+<p>
+    Notice that we included the <em>keys</em> as well as the values in
+    each linked list node. Otherwise we wouldn't know which key was
+    for which value!
+</p>
+<p class="aside">
+    There are other ways to deal with hash collisions. This is just
+    one of them.
+</p>
+</div>
+</div>
+<div class="section-wrapper shaded">
+<div class="section">
+<h2 id="when-lookups-cost-o-n">
+    When hash table operations cost <span complexity="n" class="ng-isolate-scope"><span class="complexity"><span class="ic-math ng-isolate-scope" ng-class="{&#39;block&#39;: isBlock()}" ng-transclude="" math=""><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathdefault" style="margin-right: 0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></span></span></span> time
+</h2>
+<h3>
+    Hash collisions
+</h3>
+<p>
+    If <em>all</em> our keys caused hash collisions, we'd be at risk
+    of having to walk through all of our values for a single lookup
+    (in the example above, we'd have one big linked list). This is
+    unlikely, but it <em>could</em> happen. That's the worst case.
+</p>
+<h3>
+    Dynamic array resizing
+</h3>
+<p>
+    Suppose we keep adding more items to our hash map. As the number
+    of keys and values in our hash map exceeds the number of indices
+    in the underlying array, hash collisions become inevitable.
+</p>
+<p>
+    To mitigate this, we could expand our underlying array whenever
+    things start to get crowded. That requires allocating a larger
+    array and rehashing all of our existing keys to figure out their
+    new position—<span complexity="n" class="ng-isolate-scope"><span class="complexity"><span class="ic-math ng-isolate-scope" ng-class="{&#39;block&#39;: isBlock()}" ng-transclude="" math=""><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathdefault" style="margin-right: 0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></span></span></span> time.
+</p>
+</div>
+</div>
+<div class="section-wrapper">
+<div class="section">
+<h2>
+    Sets
+</h2>
+<p>
+    A <strong>set</strong> is like a hash map except it only stores
+    keys, without values.
+</p>
+<p>
+    Sets often come up when we're tracking groups of items—nodes
+    we've visited in a graph, characters we've seen in a string, or
+    colors used by neighboring nodes. Usually, we're interested in
+    whether something is in a set or not.
+</p>
+<p>
+    Sets are usually implemented very similarly to hash
+    maps—using hashing to index into an array—but they
+    don't have to worry about storing values alongside keys.
+    <span class="ic-words ng-isolate-scope" ng-transclude="" words="concept__hash-map__how-sets-work-in-language"></span>
+</p>
+<div class="clearfix"></div>
+<div class="clearfix"></div>
+<div class="clearfix"></div>
+<div class="clearfix"></div>
+<div class="clearfix"></div>
+<div class="clearfix"></div>
+<div class="clearfix"></div>
+<div class="clearfix"></div>
+<div class="clearfix"></div>
+<div class="clearfix"></div>
+<div code-block="concept__hash-map__hash-set" language="swift" translation-highlighting="dynamic" actual-language="swift" class="ng-isolate-scope"><pre class="  language-swift">  <code class="  language-swift" ng-transclude=""><span class="token keyword">var</span> lightBulbs <span class="token operator">=</span> <span class="token builtin">Set</span><span class="token operator">&lt;</span><span class="token builtin">String</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+lightBulbs<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token string">"incandescent"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+lightBulbs<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token string">"compact fluorescent"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+lightBulbs<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token string">"LED"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+lightBulbs<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span><span class="token string">"LED"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// true</span>
+lightBulbs<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span><span class="token string">"halogen"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// false</span></code>
+</pre>
+<span class="warning-message ng-binding ng-hide" ng-show="warningMessage" ng-bind="warningMessage"></span>
+<div class="select-language-content" ng-hide="staticLanguage">
+<select ng-model="contentLanguage" ng-options="language.display_name for language in contentLanguages | orderBy: &#39;display_name&#39;" ng-change="updateLanguage(contentLanguage)" class="ng-pristine ng-untouched ng-valid" style="width: 37px;"><option value="0" label="C">C</option><option value="1" label="C#">C#</option><option value="2" label="C++">C++</option><option value="3" label="Java">Java</option><option value="4" label="JavaScript">JavaScript</option><option value="5" label="Objective-C">Objective-C</option><option value="6" label="PHP">PHP</option><option value="7" label="Python 2.7">Python 2.7</option><option value="8" label="Python 3.6 (beta)">Python 3.6 (beta)</option><option value="9" label="Ruby">Ruby</option><option value="10" selected="selected" label="Swift">Swift</option></select>
+</div>
+<span class="only-content-language ng-binding ng-hide" ng-show="staticLanguage" ng-bind="onlyLanguage"></span>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+
+            //
+            var elTranslations = {"code-blocks": {"concept__hash-map__hash-set": {"python": {"content": "light_bulbs = set()\n\nlight_bulbs.add('incandescent')\nlight_bulbs.add('compact fluorescent')\nlight_bulbs.add('LED')\n\n'LED' in light_bulbs  # True\n'halogen' in light_bulbs  # False", "actual_language": "python"}, "python3": {"content": "light_bulbs = set()\n\nlight_bulbs.add('incandescent')\nlight_bulbs.add('compact fluorescent')\nlight_bulbs.add('LED')\n\n'LED' in light_bulbs  # True\n'halogen' in light_bulbs  # False", "actual_language": "python"}, "ruby": {"content": "require 'set'\n\nlight_bulbs = Set.new\n\nlight_bulbs &lt;&lt; 'incandescent'\nlight_bulbs &lt;&lt; 'compact fluorescent'\nlight_bulbs &lt;&lt; 'LED'\n\nlight_bulbs.include?('LED') # => true\nlight_bulbs.include?('halogen') # => false", "actual_language": "ruby"}, "java": {"content": "HashSet&lt;String> lightBulbs = new HashSet&lt;>();\n\nlightBulbs.add(\"incandescent\");\nlightBulbs.add(\"compact fluorescent\");\nlightBulbs.add(\"LED\");\n\nlightBulbs.contains(\"LED\");  // true\nlightBulbs.contains(\"halogen\");  // false", "actual_language": "java"}, "javascript": {"content": "lightBulbs = new Set([\"incandescent\", \"compact fluorescent\", \"LED\"]);\n\nlightBulbs.has(\"LED\");  // true\nlightBulbs.has(\"halogen\");  // false", "actual_language": "javascript"}, "c": {"content": "// Assume we've already implemented a set\n// that tracks strings\ntypedef struct Set Set;\nSet * setNew(void);\nvoid setFree(Set *set);\nint setInsert_string(Set *set, const char *string);\nint setContains_string(Set *set, const char *string);\n\nSet *lightBulbs = setNew();\n\nsetInsert_string(lightBulbs, \"incandescent\");\nsetInsert_string(lightBulbs, \"compact fluorescent\");\nsetInsert_string(lightBulbs, \"LED\");\n\nsetContains_string(lightBulbs, \"LED\");  // 0\nsetContains_string(lightBulbs, \"halogen\");  // 1\n\nsetFree(lightBulbs);", "actual_language": "c"}, "cpp": {"content": "unordered_set&lt;string> lightBulbs;\n\nlightBulbs.insert(\"incandescent\");\nlightBulbs.insert(\"compact fluorescent\");\nlightBulbs.insert(\"LED\");\n\nlightBulbs.find(\"LED\");  // !lightBulbs.end()\nlightBulbs.find(\"halogen\");  // lightBulbs.end()", "actual_language": "cpp"}, "csharp": {"content": "var lightBulbs = new HashSet&lt;string>();\n\nlightBulbs.Add(\"incandescent\");\nlightBulbs.Add(\"compact fluorescent\");\nlightBulbs.Add(\"LED\");\n\nlightBulbs.Contains(\"LED\");  // true\nlightBulbs.Contains(\"halogen\");  // false", "actual_language": "csharp"}, "swift": {"content": "var lightBulbs = Set&lt;String>();\n\nlightBulbs.insert(\"incandescent\");\nlightBulbs.insert(\"compact fluorescent\");\nlightBulbs.insert(\"LED\");\n\nlightBulbs.contains(\"LED\");  // true\nlightBulbs.contains(\"halogen\");  // false", "actual_language": "swift"}, "objectivec": {"content": "NSMutableSet &lt;NSString *> *lightBulbs = [NSMutableSet new];\n\n[lightBulbs addObject:@\"incandescent\"];\n[lightBulbs addObject:@\"compact fluorescent\"];\n[lightBulbs addObject:@\"LED\"];\n\n[lightBulbs containsObject:@\"LED\"];  // true\n[lightBulbs containsObject:@\"halogen\"];  // false", "actual_language": "objectivec"}, "php": {"content": "$lightBulbs = [\n    'incandescent' => true,\n    'compact fluorescent' => true,\n    'LED' => true\n];\n\nisset($lightBulbs['LED']);  // true\nisset($lightBulbs['halogen']);  // false", "actual_language": "php"}}, "concept__hash-map__hash-map": {"python": {"content": "light_bulb_to_hours_of_light = {\n    'incandescent': 1200,\n    'compact fluorescent': 10000,\n    'LED': 50000,\n}", "actual_language": "python"}, "python3": {"content": "light_bulb_to_hours_of_light = {\n    'incandescent': 1200,\n    'compact fluorescent': 10000,\n    'LED': 50000,\n}", "actual_language": "python"}, "ruby": {"content": "light_bulb_to_hours_of_light = {\n  'incandescent' => 1200,\n  'compact fluorescent' => 10000,\n  'LED' => 50000\n}", "actual_language": "ruby"}, "java": {"content": "HashMap&lt;String, Integer> lightBulbToHoursOfLight = new HashMap&lt;>();\n\nlightBulbToHoursOfLight.put(\"incandescent\", 1200);\nlightBulbToHoursOfLight.put(\"compact fluorescent\", 10000);\nlightBulbToHoursOfLight.put(\"LED\", 50000);", "actual_language": "java"}, "javascript": {"content": "const lightBulbToHoursOfLight = {\n  'incandescent': 1200,\n  'compact fluorescent': 10000,\n  'LED': 50000,\n};", "actual_language": "javascript"}, "cpp": {"content": "unordered_map&lt;string, int> lightBulbToHoursOfLight;\n\nlightBulbToHoursOfLight.insert(make_pair(\"incandescent\", 1200));\nlightBulbToHoursOfLight.insert(make_pair(\"compact fluorescent\", 10000));\nlightBulbToHoursOfLight.insert(make_pair(\"LED\", 50000));", "actual_language": "cpp"}, "c": {"content": "// Assume we've already implemented a hash table\n// that maps string keys to values\ntypedef struct HashTable HashTable;\nHashTable * hashTableNew(void);\nvoid hashTableFree(HashTable *hashTable);\nint hashTableInsert_int(HashTable *hashTable, const char *key, int value);\n\nHashTable *lightBulbToHoursOfLight = hashTableNew();\n\nhashTableInsert_int(lightBulbToHoursOfLight, \"incandescent\", 1200);\nhashTableInsert_int(lightBulbToHoursOfLight, \"compact fluorescent\", 10000);\nhashTableInsert_int(lightBulbToHoursOfLight, \"LED\", 50000);\n\nhashTableFree(lightBulbToHoursOfLight);", "actual_language": "c"}, "csharp": {"content": "var lightBulbToHoursOfLight = new Dictionary&lt;string, int>();\n\nlightBulbToHoursOfLight.Add(\"incandescent\", 1200);\nlightBulbToHoursOfLight.Add(\"compact fluorescent\", 10000);\nlightBulbToHoursOfLight.Add(\"LED\", 50000);", "actual_language": "csharp"}, "swift": {"content": "var lightbulbToHoursOfLight: [String: Int] = [:]\n\nlightbulbToHoursOfLight[\"incandescent\"] = 1200\nlightbulbToHoursOfLight[\"compact fluorescent\"] = 10000\nlightbulbToHoursOfLight[\"LED\"] = 50000", "actual_language": "swift"}, "objectivec": {"content": "NSMutableDictionary&lt;NSString *, NSNumber *> *lightBulbToHoursOfLight = [NSMutableDictionary new];\n\nlightBulbToHoursOfLight[@\"incandescent\"] = @1200;\nlightBulbToHoursOfLight[@\"compact fluorescent\"] = @10000;\nlightBulbToHoursOfLight[@\"LED\"] = @50000;", "actual_language": "objectivec"}, "php": {"content": "$lightBulbToHoursOfLight = [\n    'incandescent' => 1200,\n    'compact fluorescent' => 10000,\n    'LED' => 50000\n];", "actual_language": "php"}}}, "code-inlines": {"concept__hash-map__modulus": {"default": {"content": "%"}}}, "vars": {"concept__hash-map__ns-set": {"default": {"content": "NSSet"}}, "concept__hash-map__ns-mutable-set": {"default": {"content": "NSMutableSet"}}}, "funcs": {}, "words": {"concept__hash-map__javascript-object": {"javascript": {"content": "<p class=\"aside\">\n<strong>What about JavaScript maps?</strong>\n                    Objects are <em>way</em> more common, but maps\n                    might be helpful if your keys aren't strings or\n                    you need to iterate over your data. One thing to\n                    know: maps aren't fully supported by all modern\n                    browsers yet.\n                </p>", "actual_language": "javascript"}, "default": {"content": "\n"}, "python": {"content": ""}, "python3": {"content": ""}, "ruby": {"content": ""}, "java": {"content": ""}, "c": {"content": ""}, "cpp": {"content": ""}, "csharp": {"content": ""}, "php": {"content": ""}, "swift": {"content": ""}, "objectivec": {"content": ""}}, "concept__hash-map__hash-type-restrictions": {"default": {"content": "\n"}, "python": {"content": ""}, "python3": {"content": ""}, "ruby": {"content": ""}, "java": {"content": ""}, "javascript": {"content": ""}, "c": {"content": ""}, "cpp": {"content": ""}, "csharp": {"content": ""}, "php": {"content": ""}, "swift": {"content": ""}, "objectivec": {"content": ""}}, "concept__hash-map__php-assoc-arrays": {"php": {"content": "(In PHP we can use arrays for this, with our key\nstrings in place of integer indices, because arrays\nare dynamic and associative.)", "actual_language": "php"}, "default": {"content": "\n"}, "python": {"content": ""}, "python3": {"content": ""}, "ruby": {"content": ""}, "java": {"content": ""}, "javascript": {"content": ""}, "c": {"content": ""}, "cpp": {"content": ""}, "csharp": {"content": ""}, "swift": {"content": ""}, "objectivec": {"content": ""}}, "concept__hash-map__how-hash-tables-work-in-language": {"default": {"content": "In <span words=\"c18n-language\"/>, hash tables are\n                called <span words=\"hash-tables\"/>."}, "c": {"content": "C doesn't provide a hash table implementation, so\nyou'll have to implement your own.", "actual_language": "c"}, "python": {"content": "In <span words=\"concept__hash-map__c18n-language\">Python 2.7</span>, hash tables are\n                called <span words=\"concept__hash-map__hash-tables\">dictionaries</span>."}, "python3": {"content": "In <span words=\"concept__hash-map__c18n-language\">Python 3.6</span>, hash tables are\n                called <span words=\"concept__hash-map__hash-tables\">dictionaries</span>."}, "ruby": {"content": "In <span words=\"concept__hash-map__c18n-language\">Ruby</span>, hash tables are\n                called <span words=\"concept__hash-map__hash-tables\">hashes</span>."}, "java": {"content": "In <span words=\"concept__hash-map__c18n-language\">Java</span>, hash tables are\n                called <span words=\"concept__hash-map__hash-tables\">hash maps</span>."}, "javascript": {"content": "In <span words=\"concept__hash-map__c18n-language\">JavaScript</span>, hash tables are\n                called <span words=\"concept__hash-map__hash-tables\">objects</span>."}, "cpp": {"content": "In <span words=\"concept__hash-map__c18n-language\">C++</span>, hash tables are\n                called <span words=\"concept__hash-map__hash-tables\">unordered maps</span>."}, "csharp": {"content": "In <span words=\"concept__hash-map__c18n-language\">C#</span>, hash tables are\n                called <span words=\"concept__hash-map__hash-tables\">dictionaries</span>."}, "php": {"content": "In <span words=\"concept__hash-map__c18n-language\">PHP</span>, hash tables are\n                called <span words=\"concept__hash-map__hash-tables\">arrays</span>."}, "swift": {"content": "In <span words=\"concept__hash-map__c18n-language\">Swift</span>, hash tables are\n                called <span words=\"concept__hash-map__hash-tables\">dictionaries</span>."}, "objectivec": {"content": "In <span words=\"concept__hash-map__c18n-language\">Objective-C</span>, hash tables are\n                called <span words=\"concept__hash-map__hash-tables\">dictionaries</span>."}}, "concept__hash-map__how-sets-work-in-language": {"python": {"content": "In Python,\n                <a href=\"https://markmail.org/message/ktzomp4uwrmnzao6\">\n                    the set implementation is largely copied from the dictionary\n                    implementation</a>.", "actual_language": "python"}, "python3": {"content": "In Python,\n                <a href=\"https://markmail.org/message/ktzomp4uwrmnzao6\">\n                    the set implementation is largely copied from the dictionary\n                    implementation</a>.", "actual_language": "python"}, "ruby": {"content": "In Ruby, sets are implemented using hashes. Each\nmember of the set is a key in the hash with a\ndummy value that gets ignored.", "actual_language": "ruby"}, "java": {"content": "In Java, sets are called \"hash sets.\"\n                <a href=\"https://javaconceptoftheday.com/how-hashset-works-internally-in-java/\">\n                    They're implemented using hash maps</a>&#8212;each\n                member of the set is a key in the hash map with a\n                dummy value that gets ignored.", "actual_language": "java"}, "javascript": {"content": "", "actual_language": "javascript"}, "c": {"content": "C doesn't come with a standard set implementation. Like with\nhash tables, you'll need to make your own.", "actual_language": "c"}, "cpp": {"content": "In C++, sets are called \"unordered sets.\"", "actual_language": "cpp"}, "csharp": {"content": "In C#, sets are\n                called \"hash sets,\" and their implementation is\n                <a href=\"https://referencesource.microsoft.com/#system.core/system/Collections/Generic/HashSet.cs\">\n                    similar to the implementation for\n                    dictionaries.</a>", "actual_language": "csharp"}, "php": {"content": "In PHP, arrays are used to implement sets, just like\nhash tables.", "actual_language": "php"}, "swift": {"content": "", "actual_language": "swift"}, "objectivec": {"content": "", "actual_language": "objectivec"}}, "concept__hash-map__hash-tables": {"python": {"content": "dictionaries"}, "python3": {"content": "dictionaries"}, "ruby": {"content": "hashes"}, "java": {"content": "hash maps"}, "javascript": {"content": "objects"}, "c": {"content": "hash tables"}, "cpp": {"content": "unordered maps"}, "csharp": {"content": "dictionaries"}, "swift": {"content": "dictionaries"}, "php": {"content": "arrays"}, "objectivec": {"content": "dictionaries"}}, "concept__hash-map__function": {"default": {"content": "function"}, "csharp": {"content": "method"}, "ruby": {"content": "method"}, "java": {"content": "method"}, "python": {"content": "function"}, "python3": {"content": "function"}, "javascript": {"content": "function"}, "c": {"content": "function"}, "cpp": {"content": "function"}, "php": {"content": "function"}, "swift": {"content": "function"}, "objectivec": {"content": "function"}}, "concept__hash-map__c18n-language": {"python": {"content": "Python 2.7"}, "python3": {"content": "Python 3.6"}, "ruby": {"content": "Ruby"}, "java": {"content": "Java"}, "javascript": {"content": "JavaScript"}, "c": {"content": "C"}, "cpp": {"content": "C++"}, "csharp": {"content": "C#"}, "php": {"content": "PHP"}, "swift": {"content": "Swift"}, "objectivec": {"content": "Objective-C"}}}};
+            //
+            var codeTypes = ['words', 'code-blocks', 'vars', 'funcs', 'code-inlines'];
+
+            var mergeObjects = function(objectA, objectB) {
+                objectA = objectA || {};
+                objectB = objectB || {};
+                for (var key in objectB) {
+                    objectA[key] = objectB[key];
+                }
+                return objectA;
+            }
+
+            if (!window.contentTranslations) {
+                window.contentTranslations = elTranslations;
+            } else {
+                for (var i=0; i<codeTypes.length; i++) {
+                    window.contentTranslations[codeTypes[i]] = mergeObjects(window.contentTranslations[codeTypes[i]], elTranslations[codeTypes[i]]);
+                }
+            }
+            </script>
+</div>
+
+
+
+
+<div class="section-wrapper slim">
+<div class="section">
+
+<div class="share-btns">
+
+    
+
+
+
+
+    
+        <a class="custom-share facebook-share ng-isolate-scope" href="https://www.facebook.com/sharer/sharer.php?u=https%3A//www.interviewcake.com/concept/swift/hash-map%3Fcourse%3Dfc1%26section%3Dhashing-and-hash-tables" target="_blank" tracklink="" the-event="FB share click" the-properties="{&quot;which&quot; : &quot;concept bottom Hash Table&quot;}"><i class="fa fa-facebook"> </i> Share</a>
+    
+    
+        <a class="custom-share twitter-share ng-isolate-scope" href="https://twitter.com/intent/tweet?text=Hash%20Table&amp;via=interviewcake&amp;related=interviewcake&amp;url=https%3A//www.interviewcake.com/concept/swift/hash-map%3Fcourse%3Dfc1%26section%3Dhashing-and-hash-tables" target="_blank" tracklink="" the-event="Twitter share click" the-properties="{&quot;which&quot; : &quot;concept bottom Hash Table&quot;}"><i class="fa fa-twitter"> </i> Tweet</a>
+    
+    
+        <a class="custom-share linkedin-share ng-isolate-scope" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A//www.interviewcake.com/concept/swift/hash-map%3Fcourse%3Dfc1%26section%3Dhashing-and-hash-tables&amp;title=&amp;summary=Hash%20Table&amp;source=Interview%20Cake" target="_blank" tracklink="" the-event="LinkedIn share click" the-properties="{&quot;which&quot; : &quot;concept bottom Hash Table&quot;}"><i class="fa fa-linkedin"> </i> Share</a>
+    
+
+
+
+</div>
+
+
+
+
+
+</div>
+</div>
+
+</section> <!-- .article-content -->
+
+
+
+	<div class="toc-widget-wrapper bottom-widget">
+    <div class="toc-widget">
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3">
+					
+                    <div class="back-to">
+                        <a href="https://www.interviewcake.com/table-of-contents">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                            course home
+                        </a>
+                    </div>
+					
+                </div>
+                <div class="col-md-9">
+                    <div class="next">
+                        
+                            
+                                Next up:
+                                
+                                <a href="https://www.interviewcake.com/question/inflight-entertainment?course=fc1&amp;section=hashing-and-hash-tables">
+                                Inflight Entertainment
+                                <span class="glyphicon glyphicon-arrow-right"></span>
+                                </a>
+                                
+                            
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+    </div>
+</div>
+
+
+
+
+</div>
+</div>
+
+
+
+
+
+
+        
+        
+        
+
+        
+
+            <div id="print-footer">
+                <p>
+                    Want more coding interview help?
+                </p>
+
+                <p>
+                    Check out <span class="url">interviewcake.com</span> for more advice, guides, and practice questions.
+                </p>
+            </div>
+
+            <div id="footer">
+
+                
+                <a class="newsletter-link" href="https://www.interviewcake.com/free-weekly-coding-interview-problem-newsletter">
+                    
+                    Subscribe to our weekly question email list »
+                </a>
+                
+
+                
+                <div class="links">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="by-company">
+                                    <h5>
+                                        Programming interview questions by company:
+                                    </h5>
+                                    <ul>
+                                        <li>
+                                            <a href="https://www.interviewcake.com/google-interview-questions">Google interview questions</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.interviewcake.com/facebook-interview-questions">Facebook interview questions</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.interviewcake.com/amazon-interview-questions">Amazon interview questions</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.interviewcake.com/uber-interview-questions">Uber interview questions</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.interviewcake.com/microsoft-interview-questions">Microsoft interview questions</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.interviewcake.com/apple-interview-questions">Apple interview questions</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.interviewcake.com/netflix-interview-questions">Netflix interview questions</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.interviewcake.com/dropbox-interview-questions">Dropbox interview questions</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.interviewcake.com/ebay-interview-questions">eBay interview questions</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.interviewcake.com/linkedin-interview-questions">LinkedIn interview questions</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.interviewcake.com/oracle-interview-questions">Oracle interview questions</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.interviewcake.com/paypal-interview-questions">PayPal interview questions</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.interviewcake.com/yahoo-interview-questions">Yahoo interview questions</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="by-language">
+                                    <h5>
+                                        Programming interview questions by topic:
+                                    </h5>
+                                    <ul>
+                                        <li>
+                                            <a href="https://www.interviewcake.com/sql-interview-questions">SQL interview questions</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.interviewcake.com/testing-and-qa-interview-questions">Testing and QA interview questions</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.interviewcake.com/bit-manipulation">Bit manipulation interview questions</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.interviewcake.com/java-interview-questions">Java interview questions</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.interviewcake.com/python-interview-questions">Python interview questions</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.interviewcake.com/ruby-interview-questions">Ruby interview questions</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.interviewcake.com/javascript-interview-questions">JavaScript interview questions</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.interviewcake.com/cpp-interview-questions">C++ interview questions</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.interviewcake.com/c-interview-questions">C interview questions</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.interviewcake.com/swift-interview-questions">Swift interview questions</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.interviewcake.com/objective-c-interview-questions">Objective-C interview questions</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.interviewcake.com/php-interview-questions">PHP interview questions</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.interviewcake.com/c-sharp-interview-questions">C# interview questions</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+                
+                <div class="social-media">
+                    <a class="facebook ng-isolate-scope" href="https://www.facebook.com/interviewcake" target="_blank" tracklink="" the-event="FB footer click"><i class="fa fa-facebook"></i></a>
+                    <a class="twitter ng-isolate-scope" href="https://www.twitter.com/interviewcake" target="_blank" tracklink="" the-event="Twitter footer click"><i class="fa fa-twitter"></i></a>
+                </div>
+                
+
+				<div itemscope="" itemtype="http://schema.org/Corporation">
+					<meta itemprop="description" content="Programming interview practice and tips for software engineers looking for jobs.">
+					<meta itemprop="image" content="https://www.interviewcake.com/static//images/cake_white_on_blue_600.png">
+					<meta itemprop="logo" content="https://www.interviewcake.com/static//images/cake_white_on_blue_600.png">
+					<meta itemprop="url" content="https://www.interviewcake.com">
+
+					Copyright © 2020
+					<span itemprop="name">Cake Labs, Inc.</span> All rights reserved.
+
+					<address itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress">
+						<span itemprop="streetAddress">228 Park Ave S #82632</span>,
+						<span itemprop="addressLocality">New York</span>,
+						<span itemprop="addressRegion">NY</span>
+						<span itemprop="addressCountry">US</span>
+						<span itemprop="postalCode">10003</span>
+						<span itemprop="telephone">(862) 294-2956</span>
+					</address>
+
+					<address itemprop="location" itemscope="" itemtype="http://schema.org/PostalAddress">
+						<meta itemprop="addressCountry" content="US">
+						<meta itemprop="addressLocality" content="New York">
+						<meta itemprop="addressRegion" content="NY">
+						<meta itemprop="streetAddress" content="228 Park Ave S #82632">
+						<meta itemprop="postalCode" content="10003">
+						<meta itemprop="telephone" content="(862) 294-2956">
+					</address>
+
+					<div itemprop="location" itemscope="" itemtype="http://schema.org/Place">
+						<div itemprop="geo" itemscope="" itemtype="http://schema.org/GeoCoordinates">
+							<meta itemprop="latitude" content="40.73765">
+							<meta itemprop="longitude" content="-73.98845">
+						</div>
+					</div>
+				</div>
+
+                <div>
+                    <a href="https://www.interviewcake.com/about">About</a>
+                    |
+                    <a rel="nofollow" href="https://www.interviewcake.com/privacy-policy">Privacy</a>
+                    |
+                    <a rel="nofollow" href="https://www.interviewcake.com/terms-and-conditions">Terms</a>
+                </div>
+
+				
+
+            </div>
+
+        
+
+    
+
+
+
+
+
+
+
+	
+	
+		<link href="./Hash Table_Hash Map Data Structure _ Interview Cake_files/css" rel="stylesheet" type="text/css">
+		<style type="text/css" media="all">
+			h1{visibility:visible}
+		</style>
+
+
+		
+			<link rel="stylesheet" href="./Hash Table_Hash Map Data Structure _ Interview Cake_files/6bdb35aa71a3.css" type="text/css" media="all">
+			
+		
+
+
+		<link href="./Hash Table_Hash Map Data Structure _ Interview Cake_files/style.css" rel="stylesheet" type="text/css">
+		
+			<link href="./Hash Table_Hash Map Data Structure _ Interview Cake_files/font-awesome.min.css" rel="stylesheet">
+			<link href="./Hash Table_Hash Map Data Structure _ Interview Cake_files/katex.min.css" rel="stylesheet" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
+		
+    
+	
+
+
+	
+	
+	
+
+	
+		<script src="./Hash Table_Hash Map Data Structure _ Interview Cake_files/4c3fba06-5677-4e54-86d0-db9601f055e8.js" type="text/javascript" charset="UTF-8"></script>
+	
+	<script type="text/javascript">
+	function OptanonWrapper() { }
+	</script>
+
+    
+		<script type="text/javascript"> !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t,e){var n=document.createElement("script");n.type="text/javascript";n.async=!0;n.src="https://cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(n,a);analytics._loadOptions=e};analytics.SNIPPET_VERSION="4.1.0";
+		
+			
+		  analytics.load("rowk0wc1g6");
+		
+		  analytics.page(); }}();
+		</script>
+    
+
+
+    
+    
+
+    <script type="text/javascript">
+        (function(){
+  var FLAGS = {
+    'learnings': true,'only_3_free_questions': true,'allow_anonymous_purchase': true,'data_structures_deployed': false,'tell_me_more': true,'tips_dropdown': true,'toc': true,'course_survey': true,'logo_testimonials': true,'student_pricing': true,'home_video': true,'home_slack_cta': false
+    },
+    SWITCHES = {
+    
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+    </script>
+
+    
+
+
+    
+
+    
+
+
+    
+
+    <script type="text/javascript">
+        window.CACHEBUST_QUERY_STR = '?bust=204';
+        // TODO: move above into the below
+        window.JS_CONSTANTS = {"next_step_type_enum": {"course_section_item": "_NEXT_STEP_TYPE_COURSE_SECTION_ITEM_", "login": "_NEXT_STEP_TYPE_LOGIN_", "purchase": "_NEXT_STEP_TYPE_PURCHASE_", "done": "_NEXT_STEP_TYPE_DONE_"}, "DEFAULT_C18N_LANGUAGE": {"short_name": "python", "display_name": "Python 2.7", "case_convention": "snake", "closest_languages": ["python3", "ruby", "java", "cpp", "javascript", "php", "csharp", "objectivec", "c", "swift"], "prism": "python", "ace": "python", "codewars": "python", "codewars_version": "2.7", "editor_template": "def my_function(arg):\n\n    # Write the body of your function here\n    \n\n    return 'running with %s' % arg\n\n# Run your function through some test cases here\n# Remember: debugging is half the battle!\nprint my_function('test input')\n", "display_name_without_beta": "Python 2.7"}, "C18N_LANGUAGES": [{"short_name": "python", "display_name": "Python 2.7", "case_convention": "snake", "closest_languages": ["python3", "ruby", "java", "cpp", "javascript", "php", "csharp", "objectivec", "c", "swift"], "prism": "python", "ace": "python", "codewars": "python", "codewars_version": "2.7", "editor_template": "def my_function(arg):\n\n    # Write the body of your function here\n    \n\n    return 'running with %s' % arg\n\n# Run your function through some test cases here\n# Remember: debugging is half the battle!\nprint my_function('test input')\n", "display_name_without_beta": "Python 2.7"}, {"short_name": "python3", "display_name": "Python 3.6 (beta)", "case_convention": "snake", "closest_languages": ["python", "ruby", "java", "cpp", "javascript", "php", "csharp", "objectivec", "c", "swift"], "prism": "python", "ace": "python", "codewars": "python", "codewars_version": "3.6", "editor_template": "def my_function(arg):\n\n    # Write the body of your function here\n    \n\n    return 'running with %s' % (arg)\n\n# Run your function through some test cases here\n# Remember: debugging is half the battle!\nprint(my_function('test input'))\n", "display_name_without_beta": "Python 3.6"}, {"short_name": "ruby", "display_name": "Ruby", "case_convention": "snake", "closest_languages": ["python", "python3", "java", "cpp", "javascript", "php", "csharp", "objectivec", "c", "swift"], "prism": "ruby", "ace": "ruby", "codewars": "ruby", "codewars_version": "2.5", "editor_template": "def my_function(arg)\n  # write the body of your function here\n  \n\n  return \"running with #{arg}\"\nend\n\n# run your function through some test cases here\n# remember: debugging is half the battle!\nputs my_function('test input')\n", "display_name_without_beta": "Ruby"}, {"short_name": "java", "display_name": "Java", "case_convention": "camel", "closest_languages": ["csharp", "javascript", "cpp", "c", "swift", "objectivec", "php", "ruby", "python", "python3"], "prism": "java", "ace": "java", "codewars": "java", "editor_template": "public class Solution {\n\n    public static String myFunction(String arg) {\n\n        // write the body of your function here\n        \n\n        return \"running with \" + arg;\n    }\n\n    public static void main(String[] args) {\n\n        // run your function through some test cases here\n        // remember: debugging is half the battle!\n        String testInput = \"test input\";\n        System.out.println(myFunction(testInput));\n    }\n}", "display_name_without_beta": "Java"}, {"short_name": "javascript", "display_name": "JavaScript", "case_convention": "camel", "closest_languages": ["java", "csharp", "swift", "php", "cpp", "c", "objectivec", "ruby", "python", "python3"], "prism": "javascript", "ace": "javascript", "codewars": "javascript", "codewars_version": "8", "editor_template": "function myFunction(arg) {\n\n  // write the body of your function here\n  \n\n  return 'running with ' + arg;\n}\n\n// run your function through some test cases here\n// remember: debugging is half the battle!\nconsole.log(myFunction('test input'));\n", "display_name_without_beta": "JavaScript"}, {"short_name": "c", "display_name": "C", "case_convention": "camel", "closest_languages": ["cpp", "csharp", "java", "objectivec", "python", "python3", "php", "javascript", "ruby", "swift"], "prism": "c", "ace": "c_cpp", "codewars": "c", "editor_template": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint myFunction(char *arg)\n{\n    // write the body of your function here\n    \n\n    printf(\"running with %s\\n\", arg);\n    return 0;\n}\n\nint main()\n{\n    // run your function through some test cases here\n    // remember: debugging is half the battle!\n    myFunction(\"test input\");\n    return 0;\n}", "display_name_without_beta": "C"}, {"short_name": "cpp", "display_name": "C++", "case_convention": "camel", "closest_languages": ["c", "csharp", "java", "objectivec", "python", "python3", "php", "javascript", "ruby", "swift"], "prism": "cpp", "ace": "c_cpp", "codewars": "cpp", "editor_template": "#include <iostream>\nusing namespace std;\n\nstring myFunction (const string& arg)\n{\n    // write the body of your function here\n    \n\n    return \"running with \" + arg;\n}\n\nint main ()\n{\n    // run your function through some test cases here\n    // remember: debugging is half the battle!\n    cout << myFunction (\"test input\");\n    return 0;\n}", "display_name_without_beta": "C++"}, {"short_name": "csharp", "display_name": "C#", "case_convention": "camel", "closest_languages": ["java", "javascript", "cpp", "c", "php", "swift", "objectivec", "ruby", "python", "python3"], "prism": "csharp", "ace": "csharp", "codewars": "csharp", "editor_template": "using System;\n\nnamespace Solution\n{\n    class Solution\n    {\n        public static string MyFunction(string arg)\n        {\n            // Write the body of your function here\n            \n\n            return $\"Running with {arg}\";\n        }\n\n        public static void Main(string[] args)\n        {\n            // Run your function through some test cases here.\n            // Remember: debugging is half the battle!\n            string testInput = \"test input\";\n            Console.WriteLine(MyFunction(testInput));\n        }\n    }\n}\n", "display_name_without_beta": "C#"}, {"short_name": "php", "display_name": "PHP", "case_convention": "camel", "closest_languages": ["javascript", "java", "csharp", "c", "cpp", "objectivec", "swift", "ruby", "python", "python3"], "prism": "php", "ace": "php", "codewars": "php", "editor_template": "function myFunction($arg) {\n\n    // write the body of your function here\n    \n\n    return \"running with \" . $arg;\n}\n\n// run your function through some test cases here\n// remember: debugging is half the battle!\necho myFunction(\"test input\");\n", "display_name_without_beta": "PHP"}, {"short_name": "swift", "display_name": "Swift", "case_convention": "camel", "closest_languages": ["java", "javascript", "csharp", "cpp", "php", "objectivec", "python", "python3", "c", "ruby"], "prism": "swift", "ace": "swift", "codewars": "swift", "codewars_version": "4.0", "editor_template": "func myFunction(_ arg: String) -> String {\n\n    // write the body of your function here\n    \n\n    return \"running with \\(arg)\"\n}\n\n// run your function through some test cases here\n// remember: debugging is half the battle!\nlet testInput = \"test input\"\nprint(myFunction(testInput))\n", "display_name_without_beta": "Swift"}, {"short_name": "objectivec", "display_name": "Objective-C", "case_convention": "camel", "closest_languages": ["c", "cpp", "java", "javascript", "csharp", "swift", "python", "python3", "ruby", "php"], "prism": "objectivec", "ace": "objectivec", "codewars": "objc", "codewars_version": "objc-arc", "editor_template": "// Code run in our editor is compiled with GNUStep\n\n#import <Foundation/Foundation.h>\n#import <stdio.h>\n\n@interface Solution : NSObject\n- (NSString *)myMethod:(NSString *)arg;\n@end\n\n@implementation Solution\n\n- (NSString *)myMethod:(NSString *)arg {\n    // write the body of your function here\n    \n\n    return [@\"running with \" stringByAppendingString:arg];\n}\n\n@end\n\nint main(int argc, const char * argv[]) {\n    @autoreleasepool {\n        // run your function through some test cases here\n        // remember: debugging is half the battle!\n        Solution * solution = [Solution new];\n        NSString * result = [solution myMethod:@\"test input\"];\n        printf(\"%s\", [result UTF8String]);\n    }\n}", "display_name_without_beta": "Objective-C"}], "PRISM_LANGUAGES": [{"short_name": "nolanguage", "display_name": "Plain text", "prism": "none", "ace": "plain_text", "dropdown_bottom": true, "display_name_without_beta": "Plain text"}, {"short_name": "html", "display_name": "HTML", "prism": "markup", "display_name_without_beta": "HTML"}, {"short_name": "sql", "display_name": "SQL", "prism": "sql", "display_name_without_beta": "SQL"}, {"short_name": "python", "display_name": "Python 2.7", "case_convention": "snake", "closest_languages": ["python3", "ruby", "java", "cpp", "javascript", "php", "csharp", "objectivec", "c", "swift"], "prism": "python", "ace": "python", "codewars": "python", "codewars_version": "2.7", "editor_template": "def my_function(arg):\n\n    # Write the body of your function here\n    \n\n    return 'running with %s' % arg\n\n# Run your function through some test cases here\n# Remember: debugging is half the battle!\nprint my_function('test input')\n", "display_name_without_beta": "Python 2.7"}, {"short_name": "python3", "display_name": "Python 3.6 (beta)", "case_convention": "snake", "closest_languages": ["python", "ruby", "java", "cpp", "javascript", "php", "csharp", "objectivec", "c", "swift"], "prism": "python", "ace": "python", "codewars": "python", "codewars_version": "3.6", "editor_template": "def my_function(arg):\n\n    # Write the body of your function here\n    \n\n    return 'running with %s' % (arg)\n\n# Run your function through some test cases here\n# Remember: debugging is half the battle!\nprint(my_function('test input'))\n", "display_name_without_beta": "Python 3.6"}, {"short_name": "ruby", "display_name": "Ruby", "case_convention": "snake", "closest_languages": ["python", "python3", "java", "cpp", "javascript", "php", "csharp", "objectivec", "c", "swift"], "prism": "ruby", "ace": "ruby", "codewars": "ruby", "codewars_version": "2.5", "editor_template": "def my_function(arg)\n  # write the body of your function here\n  \n\n  return \"running with #{arg}\"\nend\n\n# run your function through some test cases here\n# remember: debugging is half the battle!\nputs my_function('test input')\n", "display_name_without_beta": "Ruby"}, {"short_name": "java", "display_name": "Java", "case_convention": "camel", "closest_languages": ["csharp", "javascript", "cpp", "c", "swift", "objectivec", "php", "ruby", "python", "python3"], "prism": "java", "ace": "java", "codewars": "java", "editor_template": "public class Solution {\n\n    public static String myFunction(String arg) {\n\n        // write the body of your function here\n        \n\n        return \"running with \" + arg;\n    }\n\n    public static void main(String[] args) {\n\n        // run your function through some test cases here\n        // remember: debugging is half the battle!\n        String testInput = \"test input\";\n        System.out.println(myFunction(testInput));\n    }\n}", "display_name_without_beta": "Java"}, {"short_name": "javascript", "display_name": "JavaScript", "case_convention": "camel", "closest_languages": ["java", "csharp", "swift", "php", "cpp", "c", "objectivec", "ruby", "python", "python3"], "prism": "javascript", "ace": "javascript", "codewars": "javascript", "codewars_version": "8", "editor_template": "function myFunction(arg) {\n\n  // write the body of your function here\n  \n\n  return 'running with ' + arg;\n}\n\n// run your function through some test cases here\n// remember: debugging is half the battle!\nconsole.log(myFunction('test input'));\n", "display_name_without_beta": "JavaScript"}, {"short_name": "c", "display_name": "C", "case_convention": "camel", "closest_languages": ["cpp", "csharp", "java", "objectivec", "python", "python3", "php", "javascript", "ruby", "swift"], "prism": "c", "ace": "c_cpp", "codewars": "c", "editor_template": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint myFunction(char *arg)\n{\n    // write the body of your function here\n    \n\n    printf(\"running with %s\\n\", arg);\n    return 0;\n}\n\nint main()\n{\n    // run your function through some test cases here\n    // remember: debugging is half the battle!\n    myFunction(\"test input\");\n    return 0;\n}", "display_name_without_beta": "C"}, {"short_name": "cpp", "display_name": "C++", "case_convention": "camel", "closest_languages": ["c", "csharp", "java", "objectivec", "python", "python3", "php", "javascript", "ruby", "swift"], "prism": "cpp", "ace": "c_cpp", "codewars": "cpp", "editor_template": "#include <iostream>\nusing namespace std;\n\nstring myFunction (const string& arg)\n{\n    // write the body of your function here\n    \n\n    return \"running with \" + arg;\n}\n\nint main ()\n{\n    // run your function through some test cases here\n    // remember: debugging is half the battle!\n    cout << myFunction (\"test input\");\n    return 0;\n}", "display_name_without_beta": "C++"}, {"short_name": "csharp", "display_name": "C#", "case_convention": "camel", "closest_languages": ["java", "javascript", "cpp", "c", "php", "swift", "objectivec", "ruby", "python", "python3"], "prism": "csharp", "ace": "csharp", "codewars": "csharp", "editor_template": "using System;\n\nnamespace Solution\n{\n    class Solution\n    {\n        public static string MyFunction(string arg)\n        {\n            // Write the body of your function here\n            \n\n            return $\"Running with {arg}\";\n        }\n\n        public static void Main(string[] args)\n        {\n            // Run your function through some test cases here.\n            // Remember: debugging is half the battle!\n            string testInput = \"test input\";\n            Console.WriteLine(MyFunction(testInput));\n        }\n    }\n}\n", "display_name_without_beta": "C#"}, {"short_name": "php", "display_name": "PHP", "case_convention": "camel", "closest_languages": ["javascript", "java", "csharp", "c", "cpp", "objectivec", "swift", "ruby", "python", "python3"], "prism": "php", "ace": "php", "codewars": "php", "editor_template": "function myFunction($arg) {\n\n    // write the body of your function here\n    \n\n    return \"running with \" . $arg;\n}\n\n// run your function through some test cases here\n// remember: debugging is half the battle!\necho myFunction(\"test input\");\n", "display_name_without_beta": "PHP"}, {"short_name": "swift", "display_name": "Swift", "case_convention": "camel", "closest_languages": ["java", "javascript", "csharp", "cpp", "php", "objectivec", "python", "python3", "c", "ruby"], "prism": "swift", "ace": "swift", "codewars": "swift", "codewars_version": "4.0", "editor_template": "func myFunction(_ arg: String) -> String {\n\n    // write the body of your function here\n    \n\n    return \"running with \\(arg)\"\n}\n\n// run your function through some test cases here\n// remember: debugging is half the battle!\nlet testInput = \"test input\"\nprint(myFunction(testInput))\n", "display_name_without_beta": "Swift"}, {"short_name": "objectivec", "display_name": "Objective-C", "case_convention": "camel", "closest_languages": ["c", "cpp", "java", "javascript", "csharp", "swift", "python", "python3", "ruby", "php"], "prism": "objectivec", "ace": "objectivec", "codewars": "objc", "codewars_version": "objc-arc", "editor_template": "// Code run in our editor is compiled with GNUStep\n\n#import <Foundation/Foundation.h>\n#import <stdio.h>\n\n@interface Solution : NSObject\n- (NSString *)myMethod:(NSString *)arg;\n@end\n\n@implementation Solution\n\n- (NSString *)myMethod:(NSString *)arg {\n    // write the body of your function here\n    \n\n    return [@\"running with \" stringByAppendingString:arg];\n}\n\n@end\n\nint main(int argc, const char * argv[]) {\n    @autoreleasepool {\n        // run your function through some test cases here\n        // remember: debugging is half the battle!\n        Solution * solution = [Solution new];\n        NSString * result = [solution myMethod:@\"test input\"];\n        printf(\"%s\", [result UTF8String]);\n    }\n}", "display_name_without_beta": "Objective-C"}], "ACE_LANGUAGES": [{"short_name": "haskell", "display_name": "Haskell", "ace": "haskell", "codewars": "haskell", "editor_template": "myFunction :: String -> String\n-- write the body of your function here\n\n\nmyFunction arg = \"running with \" ++ arg\n\nmain = do\n\n  -- run your function through some test cases here\n  -- remember: debugging is half the battle!\n  let result = myFunction \"test input\"\n  putStrLn result\n", "display_name_without_beta": "Haskell"}, {"short_name": "go", "display_name": "Go", "ace": "golang", "codewars": "go", "editor_template": "package main\n\nimport \"fmt\"\n\nfunc myFunction(arg string) string {\n\n    // Write the body of your function here\n    \n\n    return \"running with \" + arg\n}\n\nfunc main() {\n\n    // Run your function through some test cases here.\n    // Remember: debuggin is half the battle!\n    fmt.Println(myFunction(\"test input\"))\n}\n", "display_name_without_beta": "Go"}, {"short_name": "nolanguage", "display_name": "Plain text", "prism": "none", "ace": "plain_text", "dropdown_bottom": true, "display_name_without_beta": "Plain text"}, {"short_name": "python", "display_name": "Python 2.7", "case_convention": "snake", "closest_languages": ["python3", "ruby", "java", "cpp", "javascript", "php", "csharp", "objectivec", "c", "swift"], "prism": "python", "ace": "python", "codewars": "python", "codewars_version": "2.7", "editor_template": "def my_function(arg):\n\n    # Write the body of your function here\n    \n\n    return 'running with %s' % arg\n\n# Run your function through some test cases here\n# Remember: debugging is half the battle!\nprint my_function('test input')\n", "display_name_without_beta": "Python 2.7"}, {"short_name": "python3", "display_name": "Python 3.6 (beta)", "case_convention": "snake", "closest_languages": ["python", "ruby", "java", "cpp", "javascript", "php", "csharp", "objectivec", "c", "swift"], "prism": "python", "ace": "python", "codewars": "python", "codewars_version": "3.6", "editor_template": "def my_function(arg):\n\n    # Write the body of your function here\n    \n\n    return 'running with %s' % (arg)\n\n# Run your function through some test cases here\n# Remember: debugging is half the battle!\nprint(my_function('test input'))\n", "display_name_without_beta": "Python 3.6"}, {"short_name": "ruby", "display_name": "Ruby", "case_convention": "snake", "closest_languages": ["python", "python3", "java", "cpp", "javascript", "php", "csharp", "objectivec", "c", "swift"], "prism": "ruby", "ace": "ruby", "codewars": "ruby", "codewars_version": "2.5", "editor_template": "def my_function(arg)\n  # write the body of your function here\n  \n\n  return \"running with #{arg}\"\nend\n\n# run your function through some test cases here\n# remember: debugging is half the battle!\nputs my_function('test input')\n", "display_name_without_beta": "Ruby"}, {"short_name": "java", "display_name": "Java", "case_convention": "camel", "closest_languages": ["csharp", "javascript", "cpp", "c", "swift", "objectivec", "php", "ruby", "python", "python3"], "prism": "java", "ace": "java", "codewars": "java", "editor_template": "public class Solution {\n\n    public static String myFunction(String arg) {\n\n        // write the body of your function here\n        \n\n        return \"running with \" + arg;\n    }\n\n    public static void main(String[] args) {\n\n        // run your function through some test cases here\n        // remember: debugging is half the battle!\n        String testInput = \"test input\";\n        System.out.println(myFunction(testInput));\n    }\n}", "display_name_without_beta": "Java"}, {"short_name": "javascript", "display_name": "JavaScript", "case_convention": "camel", "closest_languages": ["java", "csharp", "swift", "php", "cpp", "c", "objectivec", "ruby", "python", "python3"], "prism": "javascript", "ace": "javascript", "codewars": "javascript", "codewars_version": "8", "editor_template": "function myFunction(arg) {\n\n  // write the body of your function here\n  \n\n  return 'running with ' + arg;\n}\n\n// run your function through some test cases here\n// remember: debugging is half the battle!\nconsole.log(myFunction('test input'));\n", "display_name_without_beta": "JavaScript"}, {"short_name": "c", "display_name": "C", "case_convention": "camel", "closest_languages": ["cpp", "csharp", "java", "objectivec", "python", "python3", "php", "javascript", "ruby", "swift"], "prism": "c", "ace": "c_cpp", "codewars": "c", "editor_template": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint myFunction(char *arg)\n{\n    // write the body of your function here\n    \n\n    printf(\"running with %s\\n\", arg);\n    return 0;\n}\n\nint main()\n{\n    // run your function through some test cases here\n    // remember: debugging is half the battle!\n    myFunction(\"test input\");\n    return 0;\n}", "display_name_without_beta": "C"}, {"short_name": "cpp", "display_name": "C++", "case_convention": "camel", "closest_languages": ["c", "csharp", "java", "objectivec", "python", "python3", "php", "javascript", "ruby", "swift"], "prism": "cpp", "ace": "c_cpp", "codewars": "cpp", "editor_template": "#include <iostream>\nusing namespace std;\n\nstring myFunction (const string& arg)\n{\n    // write the body of your function here\n    \n\n    return \"running with \" + arg;\n}\n\nint main ()\n{\n    // run your function through some test cases here\n    // remember: debugging is half the battle!\n    cout << myFunction (\"test input\");\n    return 0;\n}", "display_name_without_beta": "C++"}, {"short_name": "csharp", "display_name": "C#", "case_convention": "camel", "closest_languages": ["java", "javascript", "cpp", "c", "php", "swift", "objectivec", "ruby", "python", "python3"], "prism": "csharp", "ace": "csharp", "codewars": "csharp", "editor_template": "using System;\n\nnamespace Solution\n{\n    class Solution\n    {\n        public static string MyFunction(string arg)\n        {\n            // Write the body of your function here\n            \n\n            return $\"Running with {arg}\";\n        }\n\n        public static void Main(string[] args)\n        {\n            // Run your function through some test cases here.\n            // Remember: debugging is half the battle!\n            string testInput = \"test input\";\n            Console.WriteLine(MyFunction(testInput));\n        }\n    }\n}\n", "display_name_without_beta": "C#"}, {"short_name": "php", "display_name": "PHP", "case_convention": "camel", "closest_languages": ["javascript", "java", "csharp", "c", "cpp", "objectivec", "swift", "ruby", "python", "python3"], "prism": "php", "ace": "php", "codewars": "php", "editor_template": "function myFunction($arg) {\n\n    // write the body of your function here\n    \n\n    return \"running with \" . $arg;\n}\n\n// run your function through some test cases here\n// remember: debugging is half the battle!\necho myFunction(\"test input\");\n", "display_name_without_beta": "PHP"}, {"short_name": "swift", "display_name": "Swift", "case_convention": "camel", "closest_languages": ["java", "javascript", "csharp", "cpp", "php", "objectivec", "python", "python3", "c", "ruby"], "prism": "swift", "ace": "swift", "codewars": "swift", "codewars_version": "4.0", "editor_template": "func myFunction(_ arg: String) -> String {\n\n    // write the body of your function here\n    \n\n    return \"running with \\(arg)\"\n}\n\n// run your function through some test cases here\n// remember: debugging is half the battle!\nlet testInput = \"test input\"\nprint(myFunction(testInput))\n", "display_name_without_beta": "Swift"}, {"short_name": "objectivec", "display_name": "Objective-C", "case_convention": "camel", "closest_languages": ["c", "cpp", "java", "javascript", "csharp", "swift", "python", "python3", "ruby", "php"], "prism": "objectivec", "ace": "objectivec", "codewars": "objc", "codewars_version": "objc-arc", "editor_template": "// Code run in our editor is compiled with GNUStep\n\n#import <Foundation/Foundation.h>\n#import <stdio.h>\n\n@interface Solution : NSObject\n- (NSString *)myMethod:(NSString *)arg;\n@end\n\n@implementation Solution\n\n- (NSString *)myMethod:(NSString *)arg {\n    // write the body of your function here\n    \n\n    return [@\"running with \" stringByAppendingString:arg];\n}\n\n@end\n\nint main(int argc, const char * argv[]) {\n    @autoreleasepool {\n        // run your function through some test cases here\n        // remember: debugging is half the battle!\n        Solution * solution = [Solution new];\n        NSString * result = [solution myMethod:@\"test input\"];\n        printf(\"%s\", [result UTF8String]);\n    }\n}", "display_name_without_beta": "Objective-C"}], "CACHEBUST_QUERY_STR": "?bust=204", "INTEGRATIONS_SETTING_ONLY_INTEGRATIONS_THAT_SUPPORT_FRONT_END_ONLY": {"Facebook Pixel": true, "Twitter Ads": true, "All": false}, "COURSE_SURVEY": [{"q_id": "time", "question": "How much time do you have to prepare for your interview?", "answers": ["As long as it takes", "Less than a month", "Less than a week", "It's basically tomorrow!"]}, {"q_id": "background", "question": "How'd you learn to code?", "answers": ["University", "Bootcamp", "Self-taught"]}, {"q_id": "worry", "question": "What's your biggest worry for interviews?", "answers": ["I'm not good enough at some of the advanced topics", "I don't even know the basics", "I don't have enough time to prepare", "I won't get as high an offer as I can earn"]}]};
+
+        
+        window.JS_VARS = {"url_content_type": "concept", "concept_slug": "hash-map"};
+        
+
+        
+    </script>
+
+    
+
+    
+        <script type="text/javascript" src="./Hash Table_Hash Map Data Structure _ Interview Cake_files/saved_resource"></script>
+        <script type="text/javascript">
+            Stripe.setPublishableKey('pk_live_4wtgGTkgBtk4YIB9JDjYdOD0');
+        </script>
+    
+
+    
+
+    
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=149278655279066";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+        <script id="twitter-wjs" src="./Hash Table_Hash Map Data Structure _ Interview Cake_files/widgets.js"></script>
+    
+
+    
+    
+        
+            <script type="text/ng-template" id="/partials/animation.html"><div class="animation-wrapper">
+    <div class="animation" id="Stage-[--[getCompId()]--]" ng-class="getCompId()">
+    </div>
+</div>
+</script>
+        
+    
+        
+            <script type="text/ng-template" id="/partials/animation_iframe.html"><div class="animation-iframe-wrapper">
+    <iframe class="animation-iframe" ng-class="'animation-iframe-'+getCompId()"></iframe>
+</div>
+</script>
+        
+    
+        
+            <script type="text/ng-template" id="/partials/code-inline.html"><span class="ic-code-inline" ng-transclude></span></script>
+        
+    
+        
+            <script type="text/ng-template" id="/partials/code-block.html"><pre class="language-[--[language]--]">
+  <code class="language-[--[language]--]" ng-transclude></code>
+</pre>
+<span class="warning-message" ng-show="warningMessage" ng-bind="warningMessage"></span>
+<div class="select-language-content" ng-hide="staticLanguage" ng-cloak>
+<select ng-model="contentLanguage"
+        ng-options="language.display_name for language in contentLanguages | orderBy: 'display_name'"
+        ng-change="updateLanguage(contentLanguage)">
+</select>
+</div>
+<span class="only-content-language" ng-show="staticLanguage" ng-bind="onlyLanguage"></span>
+</script>
+        
+    
+        
+            <script type="text/ng-template" id="/partials/complexity.html"><span class="complexity"><span math>O([--[getComplexityMarkup()]--])</span></span>
+</script>
+        
+    
+        
+            <script type="text/ng-template" id="/partials/concept.html"><span class="concept-wrapper" ng-init="showConcept=false">
+
+    <span ng-click="showConcept=!showConcept" class="concept">
+        <span class="concept-name" ng-transclude></span>
+        <span class="show-concept-icon">&#8628;</span>
+    </span>
+
+    <div ng-show="showConcept" class="slide concept-body embedded" ng-include="conceptPartialUrl">
+        Loading...
+    </div>
+
+</span>
+</script>
+        
+    
+        
+            <script type="text/ng-template" id="/partials/function.html"><span class="ic-function"><span class="name" ng-transclude></span><span ng-hide="noParens">()</span></span>
+</script>
+        
+    
+        
+            <script type="text/ng-template" id="/partials/heading.html"><h3 class="heading slide" ng-show="shouldShow()" ng-cloak ng-bind="::getHeadingText()"></h3>
+</script>
+        
+    
+        
+            <script type="text/ng-template" id="/partials/inline-footnote.html"><span class="footnote-wrapper" ng-init="show = false">
+    <span class="show-footnote-icon" ng-click="show = !show">&#8628;</span>
+    <p class="footnote" ng-transclude ng-show="show">Loading...</p>
+</span>
+</script>
+        
+    
+        
+            <script type="text/ng-template" id="/partials/loading.html"><div class="Loading">
+    Loading...
+</div>
+</script>
+        
+    
+        
+            <script type="text/ng-template" id="/partials/math.html"><span class="ic-math" ng-class="{'block': isBlock()}" ng-transclude></span>
+</script>
+        
+    
+        
+            <script type="text/ng-template" id="/partials/note.html"><div class="note slide" ng-show="shouldShow()">
+    <div class="note-content" ng-transclude>
+    </div>
+</div>
+</script>
+        
+    
+        
+            <script type="text/ng-template" id="/partials/section.html"><div class="section-wrapper" ng-class="getSectionClass()" ng-init="ready=false" ng-show="shouldShow()">
+    <span heading="[--[section]--]" hide-heading="[--[hideHeading]--]"></span>
+
+    <div class="section" ng-class="getSectionClass()" ng-transclude>
+    </div>
+</div>
+</script>
+        
+    
+        
+            <script type="text/ng-template" id="/partials/variable.html"><span class="ic-variable" ng-transclude></span>
+</script>
+        
+    
+        
+            <script type="text/ng-template" id="/partials/words.html"><span class="ic-words" ng-transclude></span>
+</script>
+        
+    
+        
+            <script type="text/ng-template" id="/partials/sidebar-sticker.html"><div class="sidebar-sticker-container-container">
+    <div class="sidebar-sticker-container" ng-hide="hide">
+        <div class="sidebar-sticker" ng-style="{visibility: visibility}" sticky offset="100" hide-when-partially-offscreen ng-cloak blocks-news-drawer-when-visible id="left-side-sticker">
+            <div class="sidebar-sticker-content">
+	            <div ng-transclude>
+	            </div>
+	        </div>
+	        <span class='close-button' ng-click="hide=true">&#215;</span>
+        </div>
+    </div>
+</div></script>
+        
+    
+
+    <!-- load current-user json with initial http request -->
+    <div class="hidden" data-preload-resource="/api/v1/current-user/" data-thejson="{&quot;id&quot;:10501631,&quot;username&quot;:&quot;2018-12-17_17:22:11_j4%26i&quot;,&quot;email&quot;:&quot;tanyab@crow.co.il&quot;,&quot;date_joined&quot;:&quot;2018-12-17T17:22:11.906531+00:00&quot;,&quot;first_name&quot;:&quot;tanya&quot;,&quot;last_name&quot;:&quot;&quot;,&quot;full_name&quot;:&quot;&quot;,&quot;short_name&quot;:&quot;tanya&quot;,&quot;is_anonymous&quot;:false,&quot;is_on_last_question&quot;:false,&quot;percent_done&quot;:0,&quot;num_questions_done&quot;:0,&quot;num_questions_remaining&quot;:46,&quot;is_full_access&quot;:true,&quot;is_student&quot;:false,&quot;first_payment_date&quot;:&quot;2019-12-10T17:21:43.892974Z&quot;,&quot;last_payment_date&quot;:&quot;2019-12-10T17:21:43.892974Z&quot;,&quot;num_free_questions_left&quot;:0,&quot;terms_has_agreed_to_latest&quot;:false,&quot;preferred_content_language&quot;:&quot;swift&quot;,&quot;preferred_editor_language&quot;:&quot;swift&quot;,&quot;is_staff&quot;:false,&quot;auth_providers_human_readable_list&quot;:&quot;Google and Facebook&quot;,&quot;num_auth_providers&quot;:2,&quot;auth_email&quot;:&quot;cokacolata@gmail.com&quot;}">
+        {"id":10501631,"username":"2018-12-17_17:22:11_j4%26i","email":"tanyab@crow.co.il","date_joined":"2018-12-17T17:22:11.906531+00:00","first_name":"tanya","last_name":"","full_name":"","short_name":"tanya","is_anonymous":false,"is_on_last_question":false,"percent_done":0,"num_questions_done":0,"num_questions_remaining":46,"is_full_access":true,"is_student":false,"first_payment_date":"2019-12-10T17:21:43.892974Z","last_payment_date":"2019-12-10T17:21:43.892974Z","num_free_questions_left":0,"terms_has_agreed_to_latest":false,"preferred_content_language":"swift","preferred_editor_language":"swift","is_staff":false,"auth_providers_human_readable_list":"Google and Facebook","num_auth_providers":2,"auth_email":"cokacolata@gmail.com"}
+    </div>
+
+    
+
+	<script src="./Hash Table_Hash Map Data Structure _ Interview Cake_files/lozad.min.js"></script>
+	<script type="text/javascript">
+        window.IC.lozadObserver = lozad();
+        window.IC.lozadObserver.observe();
+	</script>
+
+    
+        
+    
+
+    
+    <div ng-controller="LoginModalCtrl" class="modal fade login-modal ng-scope" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="Log In" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" ng-show="closeable" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6 login-buttons-wrapper">
+                            <h3 ng-bind="note" class="ng-binding">Log in/sign up</h3>
+                            <p class="subheading">With just a couple clicks.</p>
+                            <div class="login-btns">
+    <a ng-href="/auth/login/github/?next=%2Fnext" class="btn btn-soc-github" rel="nofollow" href="https://www.interviewcake.com/auth/login/github/?next=%2Fnext"><i class="fa fa-github"></i> <span class="bar">|</span> <span class="company">GitHub Auth</span></a>
+    <a ng-href="/auth/login/google-oauth2/?next=%2Fnext" class="btn btn-soc-google-plus" rel="nofollow" href="https://www.interviewcake.com/auth/login/google-oauth2/?next=%2Fnext"><i class="fa my-fa-google-plus"></i> <span class="bar">|</span> <span class="company">Google Auth</span></a>
+    <a ng-href="/auth/login/facebook/?next=%2Fnext" class="btn btn-soc-facebook" rel="nofollow" href="https://www.interviewcake.com/auth/login/facebook/?next=%2Fnext"><i class="fa my-fa-facebook"></i> <span class="bar">|</span> <span class="company">Facebook Auth</span></a>
+</div>
+<p class="login-reassurance">
+    <small>
+        We'll never post on your wall or message your friends.
+    </small>
+</p>
+
+<div class="what-about-password">
+    <p>
+        <small><a data-toggle="collapse" href="https://www.interviewcake.com/concept/swift/hash-map?course=fc1&amp;section=hashing-and-hash-tables#passwordInfo">Where do I enter my password?</a></small>
+    </p>
+
+    <div class="collapse" id="passwordInfo">
+        <div class="explanation">
+            <p>
+                Actually, <strong>we don't support password-based login.</strong> Never have. Just the OAuth methods above. Why?
+            </p>
+            <ol>
+            <li>
+                It's easy and quick. No "reset password" flow. No password to forget.
+            </li>
+            <li>
+                It lets us avoid storing passwords that hackers could access and use to try to log into our users' email or bank accounts.
+            </li>
+            <li>
+                It makes it harder for one person to share a paid Interview Cake account with multiple people.
+            </li>
+        </ol></div>
+    </div>
+</div>
+
+                        </div>
+                        <div class="col-sm-6 testimonial-wrapper">
+                            <div class="inline-testimonial wider">
+    
+    <div class="image-wrapper">
+        <img class="lozad image-top" alt="Patrick, happy user" data-src="/static//images/testimonials/patrick.png">
+    </div>
+    
+    <span class="text text-with-image">
+        <span class="quotation-mark">“</span><strong>Honestly, this feels like cheating.</strong> Very efficient way to spend your study time and definitely pays for itself!
+        <span class="author">
+            — 
+            
+                Patrick
+            
+        </span>
+    </span>
+</div>
+
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <input type="hidden" name="csrfmiddlewaretoken" value="LAEJVXd0osUT1gFFMIQsva3muirxVUNZm58lGXrQ3hYdpM34blf0LX5rh3arMRLV">
+    <div id="loading">
+    . . .
+    </div>
+
+<iframe name="stripeXDM_default151719_provider" id="stripeXDM_default151719_provider" aria-hidden="true" src="./Hash Table_Hash Map Data Structure _ Interview Cake_files/channel.html" frameborder="0" style="position: absolute; top: -2000px; left: 0px;"></iframe><iframe scrolling="no" frameborder="0" allowtransparency="true" src="./Hash Table_Hash Map Data Structure _ Interview Cake_files/widget_iframe.4f8aea4342a4ada72cba2bdffcff6b4d.html" title="Twitter settings iframe" style="display: none;"></iframe><iframe src="./Hash Table_Hash Map Data Structure _ Interview Cake_files/outer.html" frameborder="0" allowtransparency="true" scrolling="no" tabindex="-1" aria-hidden="true" style="width: 1px !important; height: 1px !important; position: fixed !important; visibility: hidden !important; pointer-events: none !important;"></iframe></body></html>
