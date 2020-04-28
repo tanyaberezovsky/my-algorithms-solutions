@@ -70,6 +70,28 @@ func isBinarySearchTree(_ tree: BinaryTreeNode?, lowerBound: Int, upperBound: In
     
     return isBinarySearchTree(tree.left, lowerBound: lowerBound, upperBound: tree.value) && isBinarySearchTree(tree.right, lowerBound: tree.value, upperBound: upperBound)
 }
+
+/*
+ 
+ func isBinarySearchTree(_ tree: BinaryTreeNode) -> Bool {
+     return isBinarySearchTree(tree, lowerBound: Int.min, upperBound: Int.max)
+ }
+
+ func isBinarySearchTree(_ tree: BinaryTreeNode?, lowerBound: Int, upperBound: Int) -> Bool {
+     guard let tree = tree else {
+         return true
+     }
+
+     if tree.value >= upperBound || tree.value <= lowerBound {
+         return false
+     }
+
+     return isBinarySearchTree(tree.left, lowerBound: lowerBound, upperBound: tree.value) &&
+         isBinarySearchTree(tree.right, lowerBound: tree.value, upperBound: upperBound)
+ }
+ */
+
+
 // interview cake approach
 //func isBinarySearchTree(_ tree: BinaryTreeNode) -> Bool {
 //
