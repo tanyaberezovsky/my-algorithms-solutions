@@ -163,15 +163,15 @@ class Tests: XCTestCase {
         XCTAssertNil(result)
     }
 
-    static let allTests = [
-        ("testFullTree", testFullTree),
-        ("testLargestHasALeftChild", testLargestHasALeftChild),
-        ("testLargestHasALeftSubtree", testLargestHasALeftSubtree),
-        ("testSecondLargestIsRootNode", testSecondLargestIsRootNode),
-        ("testDescendingLinkedList", testDescendingLinkedList),
-        ("testAscendingLinkedList", testAscendingLinkedList),
-        ("testThrowsErrorWhenTreeHasOneNode", testThrowsErrorWhenTreeHasOneNode)
-    ]
+//    static let allTests = [
+//        ("testFullTree", testFullTree),
+//        ("testLargestHasALeftChild", testLargestHasALeftChild),
+//        ("testLargestHasALeftSubtree", testLargestHasALeftSubtree),
+//        ("testSecondLargestIsRootNode", testSecondLargestIsRootNode),
+//        ("testDescendingLinkedList", testDescendingLinkedList),
+//        ("testAscendingLinkedList", testAscendingLinkedList),
+//        ("testThrowsErrorWhenTreeHasOneNode", testThrowsErrorWhenTreeHasOneNode)
+ //   ]
 }
 
 Tests.defaultTestSuite.run()

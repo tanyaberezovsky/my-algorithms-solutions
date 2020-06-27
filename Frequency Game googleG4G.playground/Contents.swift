@@ -44,20 +44,21 @@ func maxNumLowFrequency(a:[Int]) -> Int {
     return maxNumLowFreq
 }
 
-//var a = [3,4,23,11, 23, 3, 3]
-//var ret = maxNumLowFrequency(a: a)
-//print(ret)
-
 import XCTest
 class Tests: XCTestCase {
-    func oneElement() {
+    func testOneElement() {
         let ret = maxNumLowFrequency(a: [3])
         XCTAssertEqual(ret, 3)
     }
-    func oneLowFreqLowNum() {
+    func testOneLowFreqLowNum() {
         let ret = maxNumLowFrequency(a: [3,3,3,2])
         print(ret)
         XCTAssertEqual(ret, 2)
+    }
+    func test7ElementsArr() {
+        let a = [3,4,23,11, 23, 3, 3]
+        let ret = maxNumLowFrequency(a: a)
+        XCTAssertEqual(ret, 11)
     }
 }
 
