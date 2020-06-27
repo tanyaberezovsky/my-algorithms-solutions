@@ -19,7 +19,7 @@ class BinaryTreeNode {
     func insert(rightValue: Int) -> BinaryTreeNode {
         let right = BinaryTreeNode(rightValue)
         self.right = right
-        return right
+        return rightgit
     }
 }
 struct TreeLevel {
