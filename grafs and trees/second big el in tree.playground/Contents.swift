@@ -1,4 +1,32 @@
-import UIKit
+import Foundation
+
+let x: NSString = "some+other@host.xxx"
+extension String {
+    func stringByAddingPercentEncodingForRFC3986() -> String? {
+        let unreserved = "-._~/?:@"
+        let allowed = NSMutableCharacterSet.alphanumeric()
+        allowed.addCharacters(in: unreserved)
+        return self.addingPercentEncoding( withAllowedCharacters: allowed as CharacterSet) //stringByAddingPercentEncodingWithAllowedCharacters(allowed)
+    }
+    
+    
+    func stringByAddingPercentEncodingForRFC3986_2() -> String {
+           var characterSet = CharacterSet.urlQueryAllowed
+           characterSet.insert(charactersIn: "?&+")
+        var output: String = ""
+               if let ret = self.addingPercentEncoding( withAllowedCharacters: characterSet as CharacterSet){
+                   output = ret
+               }
+               return output
+    }
+
+}
+//And then to use it:
+
+let query = "some+other@host.xxx"
+let encoded = query.stringByAddingPercentEncodingForRFC3986_2()
+print(encoded)
+
 
 class BinaryTreeNode {
 

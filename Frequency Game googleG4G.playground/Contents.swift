@@ -1,5 +1,20 @@
 //https://practice.geeksforgeeks.org/problems/frequency-game/1
+/*
+ Pola Gershon11:20 AM
+ void Main()
+ {
+     var arr = new[]{11,2,50,51,51,50,4};
+     var dic = arr
+         .GroupBy(r=>r)
+         .ToDictionary(r=>r.Key, r=>r.Count());
+     var min = dic.Values.Min();
+     var res = dic
+         .Where(r=>r.Value == min)
+         .Select(r=>r.Key)
+         .Max();
+ }
 
+ */
 import Foundation
 
 
