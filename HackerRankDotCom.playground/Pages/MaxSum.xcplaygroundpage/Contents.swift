@@ -3,15 +3,12 @@
 import Foundation
 
 func miniMaxSum(arr: [Int]) -> Void {
-    
-    var sum = 0
-    let arrSorted = arr.sorted()
-    
-    arrSorted.forEach { num in
-        sum = sum + num
-    }
+    let min = arr.min() ?? 0
+    let max = arr.max() ?? 0
+  
+    let sum = arr.reduce(0) { $0 + $1 }
 
-    print("\(sum - arrSorted[4]) \(sum - arrSorted[0])")
+    print("\(sum - max) \(sum - min)")
 }
 
 miniMaxSum(arr: [1,3,5,7,9])

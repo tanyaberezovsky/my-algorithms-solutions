@@ -38,3 +38,22 @@ timeConversion("12:02:25AM")
 timeConversion("05:02:25AM")
 timeConversion("12:02:25PM")
 timeConversion("09:02:25PM")
+
+
+
+func timeConversion02(_ s: String) -> String {
+    let suffix = s.suffix(2)
+    let preffix = s.prefix(2)
+    let rawTime = s.prefix(8)
+    if suffix == "AM" {
+        
+    } else {
+        
+    }
+    return ""
+}
+
+timeConversion02("12:02:25AM")
+timeConversion02("05:02:25AM")
+timeConversion02("12:02:25PM")
+timeConversion02("09:02:25PM")

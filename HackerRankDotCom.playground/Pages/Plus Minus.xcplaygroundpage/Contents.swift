@@ -26,3 +26,4 @@ func printNumber(_ numCount: Int, _ arrLength: Int) {
 }
 
 plusMinus(arr: [1,2,3,4,5])
+

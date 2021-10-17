@@ -16,5 +16,6 @@
         <page name='New Year Chaos'/>
         <page name='Bluevine ZigZag'/>
         <page name='calculateFunctional'/>
+        <page name='Sparse Arrays'/>
     </pages>
 </playground>
