@@ -35,3 +35,8 @@ root.left?.left = Node<Int>(1)
 root.left?.right = Node<Int>(3)
 
 DFSInorderPrint(root: root)
+/*
+    4
+ 2      5
+ 1  3
+ */

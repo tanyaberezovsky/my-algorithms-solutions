@@ -86,8 +86,11 @@ func merge(head1: Node?, head2: Node?) -> Node? {
 func merge2List(head1: Node?, head2: Node?) -> Node? {
     var node1 = head1
     var node2 = head2
+    
     var newHead = head1
+    
     var runner = newHead
+    
     node1 = node1?.next
     
     while node1 != nil && node2 != nil {
@@ -100,6 +103,7 @@ func merge2List(head1: Node?, head2: Node?) -> Node? {
         }
         runner = runner?.next
     }
+    
     if node1 != nil && node2 == nil {
         runner?.next = node1
     } else if node1 == nil && node2 != nil {
@@ -131,4 +135,6 @@ head2.next = Node(4)
 head2.next?.next = Node(19)
 
 let newHead = merge(head1: head, head2: head2)
+printList(head: head)
+printList(head: head2)
 printList(head: newHead)

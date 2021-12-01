@@ -17,5 +17,13 @@
         <page name='Bluevine ZigZag'/>
         <page name='calculateFunctional'/>
         <page name='Sparse Arrays'/>
+        <page name='MergeTwoSortedLinkedLists'/>
+        <page name='Breaking the Records'/>
+        <page name='Camel Case 4'/>
+        <page name='Divisible Sum Pairs'/>
+        <page name='Arrays'/>
+        <page name='Recursive Digit Sum 02'/>
+        <page name='Queue using Two Stacks'/>
+        <page name='Balanced Brackets'/>
     </pages>
 </playground>
